@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IRON PAW — The Ninth Life Archive</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=UnifrakturCook:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --void:#050505;
+    --iron:#101010;
+    --steel:#383838;
+    --silver:#999;
+    --white:#e8e8e8;
+    --bone:#d4d0c8;
+    --line:rgba(220,220,220,.18);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.08), transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,.03), transparent 40%),
+    linear-gradient(180deg,#020202,#111,#050505);
+
+    color:var(--white);
+    font-family:"Space Mono",monospace;
+    overflow-x:hidden;
+}
+
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.12;
+
+    background:
+    repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 6px,
+        rgba(255,255,255,.04) 7px
+    );
+}
+
+
+body:after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        circle,
+        transparent 40%,
+        rgba(0,0,0,.8)
+    );
+}
+
+
+/* IRON SIGIL */
+
+.sigil{
+    position:absolute;
+    width:260px;
+    height:260px;
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+
+    box-shadow:
+    inset 0 0 80px rgba(255,255,255,.03),
+    0 0 80px rgba(255,255,255,.04);
+}
+
+
+.sigil:before{
+    content:"";
+    position:absolute;
+    inset:35px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    transform:rotate(45deg);
+}
+
+
+.sigil:after{
+    content:"";
+    position:absolute;
+    inset:75px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transform:rotate(-45deg);
+}
+
+
+
+header{
+
+    height:90vh;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    border-bottom:1px solid var(--line);
+}
+
+
+
+.mark{
+
+    z-index:2;
+
+    font-size:12px;
+
+    letter-spacing:10px;
+
+    color:#aaa;
+
+}
+
+
+
+.logo{
+
+    z-index:2;
+
+    margin-top:30px;
+
+    font-family:"UnifrakturCook",serif;
+
+    font-size:68px;
+
+    letter-spacing:5px;
+
+}
+
+
+
+.subtitle{
+
+    z-index:2;
+
+    margin-top:25px;
+
+    color:#999;
+
+    font-size:11px;
+
+    line-height:2.2;
+
+    letter-spacing:4px;
+
+}
+
+
+
+.motto{
+
+    z-index:2;
+
+    margin-top:45px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:12px;
+
+    letter-spacing:6px;
+
+}
+
+
+
+.container{
+
+    max-width:650px;
+
+    margin:auto;
+
+    padding:35px 20px;
+
+}
+
+
+
+.section{
+
+    font-family:"Cinzel",serif;
+
+    font-size:15px;
+
+    letter-spacing:5px;
+
+    padding-bottom:15px;
+
+    margin-bottom:25px;
+
+    border-bottom:1px solid var(--line);
+
+}
+
+
+
+.divider{
+
+    text-align:center;
+
+    color:#777;
+
+    letter-spacing:15px;
+
+    margin:45px 0;
+
+}
+
+
+
+
+.record{
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.07),
+        rgba(0,0,0,.8)
+    );
+
+
+    border:1px solid var(--line);
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+
+    box-shadow:
+
+    inset 0 0 50px rgba(0,0,0,.8),
+
+    0 10px 30px rgba(0,0,0,.8);
+
+}
+
+
+
+.code{
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    color:#888;
+
+}
+
+
+
+.name{
+
+    margin:15px 0;
+
+    font-family:"Cinzel",serif;
+
+    font-size:18px;
+
+    letter-spacing:2px;
+
+}
+
+
+
+.meta{
+
+    color:#999;
+
+    font-size:11px;
+
+    line-height:2;
+
+}
+
+
+
+.status{
+
+    margin-top:15px;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    color:#ddd;
+
+}
+
+
+
+.micro{
+
+    margin-top:15px;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#777;
+
+}
+
+
+
+a{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    border-bottom:1px solid #888;
+
+}
+
+
+
+a:hover{
+
+    color:#aaa;
+
+}
+
+
+
+footer{
+
+    border-top:1px solid var(--line);
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    color:#777;
+
+    font-size:10px;
+
+    letter-spacing:6px;
+
+}
+
+
+@media(max-width:600px){
+
+.logo{
+
+    font-size:48px;
+
+}
+
+.subtitle{
+
+    font-size:9px;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="sigil"></div>
+
+
+<div class="mark">
+IX
+</div>
+
+
+<div class="logo">
+IRON PAW
+</div>
+
+
+<div class="subtitle">
+
+THE NINTH LIFE ARCHIVE
+
+<br>
+
+A GLOBAL REGISTRY OF FELINE RESCUES & SANCTUARIES
+
+</div>
+
+
+<div class="motto">
+
+FORGED FOR THE FORGOTTEN
+
+</div>
+
+
+</header>
+
+
+
+
+<main class="container">
+
+
+<div class="divider">
+✦ IX ✦
+</div>
+
+
+
+<div class="section">
+THE MASTERLIST
+</div>
+
+
+
+<div class="record">
+
+<div class="code">
+IRON PAW RECORD IX-0001
+</div>
+
+
+<div class="name">
+THE CAT HOUSE ON THE KINGS
+</div>
+
+
+<div class="meta">
+
+PARLIER / CALIFORNIA<br>
+
+UNITED STATES<br>
+
+SANCTUARY / ADOPTION
+
+</div>
+
+
+<div class="status">
+
+STATUS: LIVING RECORD
+
+</div>
+
+
+<div class="micro">
+
+NO-KILL SANCTUARY ARCHIVE
+
+</div>
+
+
+<a href="https://www.cathouseonthekings.com" target="_blank">
+ACCESS →
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="record">
+
+<div class="code">
+IRON PAW RECORD IX-0002
+</div>
+
+
+<div class="name">
+BEST FRIENDS ANIMAL SOCIETY
+</div>
+
+
+<div class="meta">
+
+UNITED STATES<br>
+
+RESCUE / SANCTUARY
+
+</div>
+
+
+<div class="status">
+
+STATUS: LIVING RECORD
+
+</div>
+
+
+<a href="https://bestfriends.org" target="_blank">
+ACCESS →
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="record">
+
+<div class="code">
+IRON PAW RECORD IX-0003
+</div>
+
+
+<div class="name">
+CATS PROTECTION
+</div>
+
+
+<div class="meta">
+
+UNITED KINGDOM<br>
+
+RESCUE / WELFARE
+
+</div>
+
+
+<div class="status">
+
+STATUS: LIVING RECORD
+
+</div>
+
+
+<a href="https://www.cats.org.uk" target="_blank">
+ACCESS →
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="record">
+
+<div class="code">
+IRON PAW RECORD IX-0004
+</div>
+
+
+<div class="name">
+ALLEY CAT ALLIES
+</div>
+
+
+<div class="meta">
+
+INTERNATIONAL<br>
+
+COMMUNITY CAT PROTECTION
+
+</div>
+
+
+<div class="status">
+
+STATUS: LIVING RECORD
+
+</div>
+
+
+<a href="https://www.alleycat.org" target="_blank">
+ACCESS →
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="divider">
+✦
+</div>
+
+
+
+
+<div class="section">
+THE FAMILIAR VAULT
+</div>
+
+
+
+<div class="record">
+
+<div class="code">
+COMPANION RECORD IX-T001
+</div>
+
+
+<div class="name">
+THREE-INGREDIENT OFFERING
+</div>
+
+
+<div class="meta">
+
+OAT FLOUR<br>
+
+PUMPKIN<br>
+
+EGG
+
+</div>
+
+
+<div class="micro">
+
+SIMPLE TREAT PROVISION
+
+<br><br>
+
+PLAIN INGREDIENTS ONLY
+
+<br>
+
+OCCASIONAL OFFERING
+
+</div>
+
+
+</div>
+
+
+
+
+</main>
+
+
+
+
+<footer>
+
+IRON PAW
+
+<br>
+
+THE NINTH LIFE ARCHIVE
+
+<br><br>
+
+IX
+
+</footer>
+
+
+
+</body>
+</html>
