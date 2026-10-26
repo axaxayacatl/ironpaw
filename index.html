@@ -1,730 +1,836 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050405">
 
 <title>IRON PAW — The Ninth Life Archive</title>
+<meta name="description" content="IRON PAW is a cat rescue resource archive documenting sanctuaries, rescue organizations, community cat protection, and practical care guidance.">
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=UnifrakturCook:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
-    --void:#050505;
-    --iron:#101010;
-    --steel:#383838;
-    --silver:#999;
-    --white:#e8e8e8;
-    --bone:#d4d0c8;
-    --line:rgba(220,220,220,.18);
+:root {
+    --void: #050405;
+    --iron: #100b10;
+    --steel: #39313b;
+    --silver: #a7a0aa;
+    --white: #e8e0e9;
+    --bone: #d4c8bc;
+    --line: rgba(190, 165, 190, .22);
+    --red: #711c32;
+    --red-bright: #b72c49;
+    --violet: #76516f;
+    --mono: "Space Mono", monospace;
+    --serif: "Cinzel", serif;
 }
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    margin:0;
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: #594052 #080608;
+}
+
+body {
+    margin: 0;
+    color: var(--white);
     background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,.08), transparent 35%),
-    radial-gradient(circle at 20% 80%, rgba(255,255,255,.03), transparent 40%),
-    linear-gradient(180deg,#020202,#111,#050505);
-
-    color:var(--white);
-    font-family:"Space Mono",monospace;
-    overflow-x:hidden;
+        radial-gradient(ellipse at 50% 4%,
+            rgba(95, 42, 77, .20), transparent 42%),
+        radial-gradient(ellipse at 8% 65%,
+            rgba(79, 24, 48, .12), transparent 35%),
+        repeating-linear-gradient(
+            135deg,
+            transparent 0,
+            transparent 80px,
+            rgba(210, 190, 210, .018) 81px,
+            transparent 83px
+        ),
+        linear-gradient(180deg, #050405, #100b10 48%, #050405);
+    font-family: var(--mono);
+    overflow-x: hidden;
 }
 
-
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.12;
-
-    background:
-    repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 6px,
-        rgba(255,255,255,.04) 7px
+/* Subtle scanlines only. No screen vignette. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    opacity: .22;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 3px,
+        rgba(230, 210, 230, .025) 4px,
+        transparent 5px
     );
 }
 
-
-body:after{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-
-    background:
-    radial-gradient(
-        circle,
-        transparent 40%,
-        rgba(0,0,0,.8)
-    );
+body::after {
+    content: none;
 }
 
+a {
+    color: var(--white);
+    text-decoration: none;
+}
 
-/* IRON SIGIL */
+a:focus-visible {
+    outline: 2px solid var(--red-bright);
+    outline-offset: 5px;
+}
 
-.sigil{
-    position:absolute;
-    width:260px;
-    height:260px;
+/* THE NINTH LIFE SIGIL */
 
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:50%;
-
+.sigil {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(194, 160, 192, .24);
+    border-radius: 50%;
     box-shadow:
-    inset 0 0 80px rgba(255,255,255,.03),
-    0 0 80px rgba(255,255,255,.04);
+        inset 0 0 65px rgba(120, 65, 110, .08),
+        0 0 80px rgba(106, 27, 55, .13);
 }
 
-
-.sigil:before{
-    content:"";
-    position:absolute;
-    inset:35px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    transform:rotate(45deg);
+.sigil::before {
+    content: "";
+    position: absolute;
+    inset: 25px;
+    border: 1px solid rgba(194, 160, 192, .22);
+    transform: rotate(45deg);
 }
 
-
-.sigil:after{
-    content:"";
-    position:absolute;
-    inset:75px;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    transform:rotate(-45deg);
+.sigil::after {
+    content: "";
+    position: absolute;
+    inset: 66px;
+    border: 1px solid rgba(170, 53, 84, .4);
+    transform: rotate(-45deg);
 }
 
-
-
-header{
-
-    height:90vh;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    position:relative;
-
-    border-bottom:1px solid var(--line);
-}
-
-
-
-.mark{
-
-    z-index:2;
-
-    font-size:12px;
-
-    letter-spacing:10px;
-
-    color:#aaa;
-
-}
-
-
-
-.logo{
-
-    z-index:2;
-
-    margin-top:30px;
-
-    font-family:"UnifrakturCook",serif;
-
-    font-size:68px;
-
-    letter-spacing:5px;
-
-}
-
-
-
-.subtitle{
-
-    z-index:2;
-
-    margin-top:25px;
-
-    color:#999;
-
-    font-size:11px;
-
-    line-height:2.2;
-
-    letter-spacing:4px;
-
-}
-
-
-
-.motto{
-
-    z-index:2;
-
-    margin-top:45px;
-
-    font-family:"Cinzel",serif;
-
-    font-size:12px;
-
-    letter-spacing:6px;
-
-}
-
-
-
-.container{
-
-    max-width:650px;
-
-    margin:auto;
-
-    padding:35px 20px;
-
-}
-
-
-
-.section{
-
-    font-family:"Cinzel",serif;
-
-    font-size:15px;
-
-    letter-spacing:5px;
-
-    padding-bottom:15px;
-
-    margin-bottom:25px;
-
-    border-bottom:1px solid var(--line);
-
-}
-
-
-
-.divider{
-
-    text-align:center;
-
-    color:#777;
-
-    letter-spacing:15px;
-
-    margin:45px 0;
-
-}
-
-
-
-
-.record{
-
+header {
+    min-height: 90vh;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    isolation: isolate;
+    border-bottom: 1px solid var(--line);
     background:
+        radial-gradient(ellipse at center,
+            rgba(83, 39, 76, .09), transparent 62%),
+        linear-gradient(180deg, transparent, rgba(0, 0, 0, .38));
+}
 
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.07),
-        rgba(0,0,0,.8)
+header::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 90px;
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        90deg, transparent, #8e2948, #c1a0b9, #8e2948, transparent
     );
+    box-shadow: 0 0 22px rgba(153, 42, 80, .3);
+}
 
+.mark {
+    position: relative;
+    z-index: 2;
+    color: #c49bb8;
+    font-size: 12px;
+    letter-spacing: 12px;
+    padding-left: 12px;
+    text-shadow: 0 0 15px rgba(161, 70, 121, .28);
+}
 
-    border:1px solid var(--line);
+.logo {
+    position: relative;
+    z-index: 2;
+    margin-top: 30px;
+    font-family: "UnifrakturCook", serif;
+    font-size: clamp(52px, 10vw, 88px);
+    letter-spacing: 4px;
+    color: #e7dce8;
+    text-shadow:
+        2px 2px 0 #342632,
+        -1px 0 0 #8d7b90,
+        0 0 30px rgba(167, 109, 161, .13);
+}
 
-    padding:25px;
+.subtitle {
+    position: relative;
+    z-index: 2;
+    margin-top: 25px;
+    color: #b1a0b2;
+    font-size: 11px;
+    line-height: 2.4;
+    letter-spacing: 4px;
+}
 
-    margin-bottom:25px;
+.motto {
+    position: relative;
+    z-index: 2;
+    margin-top: 42px;
+    padding: 12px 18px;
+    border-top: 1px solid #87304d;
+    border-bottom: 1px solid rgba(190, 165, 190, .25);
+    font-family: var(--serif);
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #dfc9d9;
+    text-shadow: 0 0 12px rgba(130, 46, 91, .2);
+}
 
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 35px 20px 65px;
+}
 
+.divider {
+    text-align: center;
+    color: #b18aaa;
+    letter-spacing: 12px;
+    margin: 44px 0;
+    font-size: 12px;
+    text-shadow: 0 0 12px rgba(145, 63, 120, .25);
+}
+
+.section {
+    position: relative;
+    color: #e1d4e2;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    padding: 0 0 15px 13px;
+    margin: 0 0 25px;
+    border-bottom: 1px solid var(--line);
+    border-left: 2px solid #8e3457;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 34%;
+    height: 1px;
+    background: linear-gradient(90deg, #8e3457, transparent);
+}
+
+.section-note {
+    margin: -12px 0 24px;
+    color: #928493;
+    font-size: 10px;
+    line-height: 1.9;
+    letter-spacing: 1px;
+}
+
+/* ARCHIVE RECORDS */
+
+.record {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 100% 0%,
+            rgba(109, 57, 100, .10), transparent 45%),
+        linear-gradient(145deg, #19121a, #090709 76%);
+    border: 1px solid #413342;
+    padding: 25px;
+    margin-bottom: 24px;
     box-shadow:
-
-    inset 0 0 50px rgba(0,0,0,.8),
-
-    0 10px 30px rgba(0,0,0,.8);
-
+        inset 0 0 50px rgba(0, 0, 0, .8),
+        inset 0 1px rgba(220, 190, 220, .04),
+        0 12px 30px rgba(0, 0, 0, .65);
+    transition: border-color .2s ease;
 }
 
-
-
-.code{
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    color:#888;
-
+/* Static metal ornament, not a hover effect. */
+.record::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55px;
+    height: 2px;
+    background: linear-gradient(90deg, #a02c4d, #bda0bd, transparent);
 }
 
-
-
-.name{
-
-    margin:15px 0;
-
-    font-family:"Cinzel",serif;
-
-    font-size:18px;
-
-    letter-spacing:2px;
-
+.record::after {
+    content: "IX";
+    position: absolute;
+    right: -7px;
+    bottom: -35px;
+    color: rgba(177, 132, 176, .055);
+    font-family: "UnifrakturCook", serif;
+    font-size: 110px;
+    pointer-events: none;
+    transform: rotate(-12deg);
 }
 
-
-
-.meta{
-
-    color:#999;
-
-    font-size:11px;
-
-    line-height:2;
-
+/* No hover glow or hover shadow changes. */
+.record:hover {
+    border-color: #79516e;
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, .8),
+        0 12px 30px rgba(0, 0, 0, .65);
 }
 
-
-
-.status{
-
-    margin-top:15px;
-
-    font-size:10px;
-
-    letter-spacing:3px;
-
-    color:#ddd;
-
+.code {
+    position: relative;
+    z-index: 1;
+    color: #bd7e9c;
+    font-size: 10px;
+    letter-spacing: 3px;
+    overflow-wrap: anywhere;
 }
 
-
-
-.micro{
-
-    margin-top:15px;
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    color:#777;
-
+.name {
+    position: relative;
+    z-index: 1;
+    margin: 17px 0;
+    color: #e8dce8;
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: 1.5px;
 }
 
-
-
-a{
-
-    display:inline-block;
-
-    margin-top:15px;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    border-bottom:1px solid #888;
-
+.meta {
+    position: relative;
+    z-index: 1;
+    color: #b5a8b4;
+    font-size: 11px;
+    line-height: 2.2;
+    letter-spacing: .5px;
 }
 
-
-
-a:hover{
-
-    color:#aaa;
-
+.status {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-top: 17px;
+    padding: 5px 8px;
+    border: 1px solid #51404f;
+    border-left: 2px solid #96749a;
+    color: #c7b5cb;
+    font-size: 9px;
+    letter-spacing: 2px;
 }
 
-
-
-footer{
-
-    border-top:1px solid var(--line);
-
-    text-align:center;
-
-    padding:50px 20px;
-
-    color:#777;
-
-    font-size:10px;
-
-    letter-spacing:6px;
-
+.micro {
+    position: relative;
+    z-index: 1;
+    margin-top: 17px;
+    color: #928493;
+    font-size: 10px;
+    line-height: 2;
+    letter-spacing: 1.5px;
 }
 
-
-@media(max-width:600px){
-
-.logo{
-
-    font-size:48px;
-
+.access {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 9px 12px;
+    border: 1px solid #594052;
+    border-left: 2px solid #a53b5b;
+    background: linear-gradient(
+        135deg, rgba(118, 43, 77, .16), rgba(0, 0, 0, .2)
+    );
+    color: #e9dce9;
+    font-size: 10px;
+    letter-spacing: 3px;
+    transition: background .2s ease, border-color .2s ease;
 }
 
-.subtitle{
-
-    font-size:9px;
-
+.access:hover {
+    background: rgba(121, 38, 75, .25);
+    border-color: #a34c76;
+    color: #fff0fa;
 }
 
+/* THE FIELD MANUAL */
+
+.manual-step {
+    position: relative;
+    z-index: 1;
+    padding: 0 0 18px;
+    margin: 0 0 18px;
+    border-bottom: 1px solid rgba(190, 165, 190, .12);
 }
 
+.manual-step:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+}
 
+.step-title {
+    margin-bottom: 9px;
+    color: #e4d6e4;
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+.step-number {
+    margin-right: 8px;
+    color: #c16c91;
+    font-family: var(--mono);
+    font-size: 10px;
+}
+
+.manual-step p {
+    margin: 0;
+    color: #b6a9b7;
+    font-size: 11px;
+    line-height: 2;
+}
+
+.warning {
+    border-color: #49323e;
+}
+
+.warning::before {
+    background: linear-gradient(90deg, #a37b8d, #c5a6bb, transparent);
+}
+
+.warning .code {
+    color: #d4a2bc;
+}
+
+/* ARCHIVE NOTICE */
+
+footer {
+    position: relative;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    padding: 45px 20px;
+    color: #99889b;
+    font-size: 10px;
+    line-height: 2.5;
+    letter-spacing: 5px;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    width: 80px;
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, #8e3457, transparent);
+}
+
+.footer-mark {
+    color: #bb7ea6;
+    font-family: "UnifrakturCook", serif;
+    font-size: 28px;
+    text-shadow: 0 0 15px rgba(154, 64, 122, .3);
+}
+
+@media (max-width: 600px) {
+    header {
+        min-height: 78vh;
+        padding: 50px 16px;
+    }
+
+    .sigil {
+        width: 220px;
+        height: 220px;
+    }
+
+    .logo {
+        font-size: clamp(45px, 12vw, 65px);
+    }
+
+    .subtitle {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .motto {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .container {
+        padding: 25px 15px 45px;
+    }
+
+    .section {
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+
+    .record {
+        padding: 21px 18px;
+    }
+
+    .name {
+        font-size: 15px;
+    }
+
+    .meta,
+    .manual-step p {
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .record,
+    .access {
+        transition: none;
+    }
+}
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
+    <div class="sigil" aria-hidden="true"></div>
 
-<div class="sigil"></div>
+    <div class="mark">IX</div>
 
+    <div class="logo">IRON PAW</div>
 
-<div class="mark">
-IX
-</div>
+    <div class="subtitle">
+        THE NINTH LIFE ARCHIVE
+        <br>
+        A GLOBAL REGISTRY OF FELINE RESCUES &amp; SANCTUARIES
+    </div>
 
-
-<div class="logo">
-IRON PAW
-</div>
-
-
-<div class="subtitle">
-
-THE NINTH LIFE ARCHIVE
-
-<br>
-
-A GLOBAL REGISTRY OF FELINE RESCUES & SANCTUARIES
-
-</div>
-
-
-<div class="motto">
-
-FORGED FOR THE FORGOTTEN
-
-</div>
-
-
+    <div class="motto">FORGED FOR THE FORGOTTEN</div>
 </header>
-
-
-
 
 <main class="container">
 
-
-<div class="divider">
-✦ IX ✦
-</div>
-
-
-
-<div class="section">
-THE MASTERLIST
-</div>
-
-
-
-<div class="record">
-
-<div class="code">
-IRON PAW RECORD IX-0001
-</div>
-
-
-<div class="name">
-THE CAT HOUSE ON THE KINGS
-</div>
-
-
-<div class="meta">
-
-PARLIER / CALIFORNIA<br>
-
-UNITED STATES<br>
-
-SANCTUARY / ADOPTION
-
-</div>
-
-
-<div class="status">
-
-STATUS: LIVING RECORD
-
-</div>
-
-
-<div class="micro">
-
-NO-KILL SANCTUARY ARCHIVE
-
-</div>
-
-
-<a href="https://www.cathouseonthekings.com" target="_blank">
-ACCESS →
-</a>
-
-
-</div>
-
-
-
-
-
-<div class="record">
-
-<div class="code">
-IRON PAW RECORD IX-0002
-</div>
-
-
-<div class="name">
-BEST FRIENDS ANIMAL SOCIETY
-</div>
-
-
-<div class="meta">
-
-UNITED STATES<br>
-
-RESCUE / SANCTUARY
-
-</div>
-
-
-<div class="status">
-
-STATUS: LIVING RECORD
-
-</div>
-
-
-<a href="https://bestfriends.org" target="_blank">
-ACCESS →
-</a>
-
-
-</div>
-
-
-
-
-
-<div class="record">
-
-<div class="code">
-IRON PAW RECORD IX-0003
-</div>
-
-
-<div class="name">
-CATS PROTECTION
-</div>
-
-
-<div class="meta">
-
-UNITED KINGDOM<br>
-
-RESCUE / WELFARE
-
-</div>
-
-
-<div class="status">
-
-STATUS: LIVING RECORD
-
-</div>
-
-
-<a href="https://www.cats.org.uk" target="_blank">
-ACCESS →
-</a>
-
-
-</div>
-
-
-
-
-
-<div class="record">
-
-<div class="code">
-IRON PAW RECORD IX-0004
-</div>
-
-
-<div class="name">
-ALLEY CAT ALLIES
-</div>
-
-
-<div class="meta">
-
-INTERNATIONAL<br>
-
-COMMUNITY CAT PROTECTION
-
-</div>
-
-
-<div class="status">
-
-STATUS: LIVING RECORD
-
-</div>
-
-
-<a href="https://www.alleycat.org" target="_blank">
-ACCESS →
-</a>
-
-
-</div>
-
-
-
-
-
-<div class="divider">
-✦
-</div>
-
-
-
-
-<div class="section">
-THE FAMILIAR VAULT
-</div>
-
-
-
-<div class="record">
-
-<div class="code">
-COMPANION RECORD IX-T001
-</div>
-
-
-<div class="name">
-THREE-INGREDIENT OFFERING
-</div>
-
-
-<div class="meta">
-
-OAT FLOUR<br>
-
-PUMPKIN<br>
-
-EGG
-
-</div>
-
-
-<div class="micro">
-
-SIMPLE TREAT PROVISION
-
-<br><br>
-
-PLAIN INGREDIENTS ONLY
-
-<br>
-
-OCCASIONAL OFFERING
-
-</div>
-
-
-</div>
-<div class="record">
-
-<div class="code">
-COMPANION RITUAL IX-C001
-</div>
-
-<div class="name">
-TWO-STEP CAT ACTIVITY
-</div>
-
-<div class="meta">
-
-STEP 01 — THE HUNT<br>
-HIDE A SMALL TOY OR TREAT NEARBY.<br>
-LET YOUR CAT FIND IT AT THEIR OWN PACE.
-
-<br><br>
-
-STEP 02 — THE RETURN<br>
-SIT QUIETLY WITH YOUR CAT FOR A FEW MINUTES.<br>
-GENTLY PET THEM OR LET THEM CHOOSE THE CONTACT.
-
-</div>
-
-<div class="micro">
-
-NO TRAINING REQUIRED<br>
-NO PRESSURE TO PERFORM<br>
-JUST PLAY + COMPANY
-
-</div>
-
-</div>
-
-
+    <div class="divider" aria-hidden="true">✦ IX ✦</div>
+
+    <section aria-labelledby="masterlist">
+        <h2 class="section" id="masterlist">THE MASTERLIST</h2>
+
+        <p class="section-note">
+            RESCUE NETWORKS / SANCTUARIES / COMMUNITY CAT PROTECTION
+        </p>
+
+        <article class="record">
+            <div class="code">IRON PAW RECORD IX-0001</div>
+            <h3 class="name">THE CAT HOUSE ON THE KINGS</h3>
+
+            <div class="meta">
+                PARLIER / CALIFORNIA<br>
+                UNITED STATES<br>
+                SANCTUARY / ADOPTION
+            </div>
+
+            <div class="status">STATUS: LIVING RECORD</div>
+
+            <div class="micro">
+                CAT SANCTUARY / ADOPTION RESOURCES
+            </div>
+
+            <a class="access"
+               href="https://www.cathouseonthekings.com"
+               target="_blank"
+               rel="noopener noreferrer">
+                ACCESS ↗
+            </a>
+        </article>
+
+        <article class="record">
+            <div class="code">IRON PAW RECORD IX-0002</div>
+            <h3 class="name">BEST FRIENDS ANIMAL SOCIETY</h3>
+
+            <div class="meta">
+                UNITED STATES<br>
+                RESCUE / SANCTUARY / ADOPTION
+            </div>
+
+            <div class="status">STATUS: LIVING RECORD</div>
+
+            <div class="micro">
+                ANIMAL WELFARE / SHELTER SUPPORT
+            </div>
+
+            <a class="access"
+               href="https://bestfriends.org"
+               target="_blank"
+               rel="noopener noreferrer">
+                ACCESS ↗
+            </a>
+        </article>
+
+        <article class="record">
+            <div class="code">IRON PAW RECORD IX-0003</div>
+            <h3 class="name">CATS PROTECTION</h3>
+
+            <div class="meta">
+                UNITED KINGDOM<br>
+                RESCUE / WELFARE / ADOPTION
+            </div>
+
+            <div class="status">STATUS: LIVING RECORD</div>
+
+            <div class="micro">
+                CAT CARE GUIDANCE / RESCUE SERVICES
+            </div>
+
+            <a class="access"
+               href="https://www.cats.org.uk"
+               target="_blank"
+               rel="noopener noreferrer">
+                ACCESS ↗
+            </a>
+        </article>
+
+        <article class="record">
+            <div class="code">IRON PAW RECORD IX-0004</div>
+            <h3 class="name">ALLEY CAT ALLIES</h3>
+
+            <div class="meta">
+                UNITED STATES / INTERNATIONAL RESOURCES<br>
+                COMMUNITY CAT PROTECTION
+            </div>
+
+            <div class="status">STATUS: LIVING RECORD</div>
+
+            <div class="micro">
+                COMMUNITY CAT ADVOCACY / TRAP-NEUTER-RETURN
+            </div>
+
+            <a class="access"
+               href="https://www.alleycat.org"
+               target="_blank"
+               rel="noopener noreferrer">
+                ACCESS ↗
+            </a>
+        </article>
+    </section>
+
+    <div class="divider" aria-hidden="true">✦ ☽ ✦</div>
+
+    <section aria-labelledby="field-manual">
+        <h2 class="section" id="field-manual">THE FIELD MANUAL</h2>
+
+        <p class="section-note">
+            PRACTICAL REFERENCE / FIRST RESPONSE / RESPONSIBLE CARE
+        </p>
+
+        <article class="record">
+            <div class="code">FIELD PROTOCOL IX-F001</div>
+            <h3 class="name">WHEN YOU FIND A CAT</h3>
+
+            <div class="manual-step">
+                <div class="step-title">
+                    <span class="step-number">01 /</span>
+                    ASSESS THE SITUATION
+                </div>
+                <p>
+                    Observe the cat from a safe distance. Look for visible
+                    injuries, difficulty breathing, distress, or signs that
+                    kittens may be nearby. Avoid chasing or cornering the cat.
+                </p>
+            </div>
+
+            <div class="manual-step">
+                <div class="step-title">
+                    <span class="step-number">02 /</span>
+                    CONTACT LOCAL SUPPORT
+                </div>
+                <p>
+                    Contact a local animal shelter, rescue organization,
+                    veterinarian, or animal control service for guidance.
+                    Ask about safe handling, lost-pet procedures, and
+                    available assistance before attempting capture.
+                </p>
+            </div>
+
+            <div class="manual-step">
+                <div class="step-title">
+                    <span class="step-number">03 /</span>
+                    CHECK FOR IDENTIFICATION
+                </div>
+                <p>
+                    If the cat can be safely contained, ask a veterinarian
+                    or shelter to scan for a microchip. Check local lost-pet
+                    listings and follow applicable found-animal procedures.
+                </p>
+            </div>
+
+            <div class="manual-step">
+                <div class="step-title">
+                    <span class="step-number">04 /</span>
+                    ARRANGE SAFE CARE
+                </div>
+                <p>
+                    Follow a rescue professional's advice about temporary
+                    containment, food, water, and separation from household
+                    animals. Keep an unfamiliar cat in a quiet, secure area
+                    only if it is safe to do so.
+                </p>
+            </div>
+
+            <div class="micro">
+                DO NOT HANDLE AN INJURED OR FRIGHTENED CAT WITHOUT
+                APPROPRIATE GUIDANCE. SEEK URGENT VETERINARY HELP
+                FOR SERIOUS INJURIES OR BREATHING DIFFICULTIES.
+            </div>
+        </article>
+
+        <article class="record warning">
+            <div class="code">FIELD NOTICE IX-F002</div>
+            <h3 class="name">KITTENS WITHOUT A VISIBLE MOTHER</h3>
+
+            <div class="meta">
+                OBSERVE FIRST / INTERVENE WHEN NECESSARY
+            </div>
+
+            <div class="micro">
+                Young kittens may be left alone temporarily while their
+                mother searches for food. Observe from a safe distance and
+                contact a local kitten rescue or veterinarian for age-specific
+                advice. Do not separate kittens from their mother unless
+                intervention is necessary or a qualified responder advises it.
+            </div>
+
+            <a class="access"
+               href="https://www.alleycat.org"
+               target="_blank"
+               rel="noopener noreferrer">
+                KITTEN RESOURCES ↗
+            </a>
+        </article>
+    </section>
+
+    <div class="divider" aria-hidden="true">✦ ☽ ✦</div>
+
+    <section aria-labelledby="familiar-vault">
+        <h2 class="section" id="familiar-vault">THE FAMILIAR VAULT</h2>
+
+        <p class="section-note">
+            COMPANION CARE / ENRICHMENT / EVERYDAY PROVISIONS
+        </p>
+
+        <article class="record">
+            <div class="code">COMPANION RECORD IX-T001</div>
+            <h3 class="name">THREE-INGREDIENT OFFERING</h3>
+
+            <div class="meta">
+                OAT FLOUR<br>
+                PLAIN PUMPKIN<br>
+                EGG
+            </div>
+
+            <div class="micro">
+                SIMPLE HOMEMADE TREAT REFERENCE<br><br>
+                Combine plain pumpkin puree, oat flour, and egg, then bake
+                until fully cooked. Do not use sweetened pumpkin pie filling.
+                Allow to cool completely and offer only a small amount
+                occasionally if the ingredients are suitable for your cat.
+                Treats should supplement, not replace, a complete feline diet.
+            </div>
+        </article>
+
+        <article class="record">
+            <div class="code">COMPANION RITUAL IX-C001</div>
+            <h3 class="name">TWO-STEP CAT ACTIVITY</h3>
+
+            <div class="manual-step">
+                <div class="step-title">
+                    <span class="step-number">01 /</span>
+                    THE HUNT
+                </div>
+                <p>
+                    Hide a familiar toy or place a few pieces of your cat's
+                    usual food nearby. Let your cat investigate at their own
+                    pace, without forcing participation.
+                </p>
+            </div>
+
+            <div class="manual-step">
+                <div class="step-title">
+                    <span class="step-number">02 /</span>
+                    THE RETURN
+                </div>
+                <p>
+                    Sit quietly with your cat for a few minutes. Offer gentle
+                    contact if they welcome it, or simply share the space
+                    and let them choose how to interact.
+                </p>
+            </div>
+
+            <div class="micro">
+                NO TRAINING REQUIRED<br>
+                NO PRESSURE TO PERFORM<br>
+                PLAY / COMPANY / REST
+            </div>
+        </article>
+    </section>
+
+    <div class="divider" aria-hidden="true">✦ IX ✦</div>
+
+    <section aria-labelledby="archive-notice">
+        <h2 class="section" id="archive-notice">ARCHIVE NOTICE</h2>
+
+        <article class="record">
+            <div class="code">SYSTEM NOTE IX-N001</div>
+            <h3 class="name">A LIVING DIRECTORY</h3>
+
+            <div class="meta">
+                RESOURCE LINKS MAY CHANGE<br>
+                SERVICES VARY BY LOCATION<br>
+                VERIFY DETAILS WITH EACH ORGANIZATION
+            </div>
+
+            <div class="micro">
+                IRON PAW IS AN INDEPENDENT RESOURCE DIRECTORY.
+                LISTING AN ORGANIZATION DOES NOT IMPLY FORMAL AFFILIATION
+                OR ENDORSEMENT. CONTACT EACH PROVIDER DIRECTLY TO CONFIRM
+                ITS CURRENT SERVICES, ELIGIBILITY REQUIREMENTS, AND
+                AVAILABILITY.
+            </div>
+        </article>
+    </section>
 
 </main>
 
-
-
-
 <footer>
-
-IRON PAW
-
-<br>
-
-THE NINTH LIFE ARCHIVE
-
-<br><br>
-
-IX
-
+    IRON PAW
+    <br>
+    THE NINTH LIFE ARCHIVE
+    <br><br>
+    <div class="footer-mark">IX</div>
+    <br>
+    FORGED FOR THE FORGOTTEN
 </footer>
-
-
 
 </body>
 </html>
+
