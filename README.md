@@ -19,7 +19,7 @@ Its development brings web design and information organization into a practical 
 
 ## Live Website
 
-[Visit IRON PAW](https://axayacatl.github.io/ironpaw/)
+[Visit IRON PAW](https://axaxayacatl.github.io/ironpaw/)
 
 ## Creator
 
