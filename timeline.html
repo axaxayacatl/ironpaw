@@ -1,0 +1,1287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050405">
+
+<title>IRON PAW — Enrichment Generator / Nine Lives Timeline</title>
+<meta name="description" content="An interactive feline enrichment generator and nine lives development timeline. Explore activities, life stages, and companion care.">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=UnifrakturCook:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --void:#050405;
+    --iron:#100b10;
+    --steel:#39313b;
+    --silver:#a7a0aa;
+    --white:#e8e0e9;
+    --bone:#d4c8bc;
+    --line:rgba(190,165,190,.22);
+    --red:#711c32;
+    --red-bright:#b72c49;
+    --violet:#76516f;
+    --mono:"Space Mono",monospace;
+    --serif:"Cinzel",serif;
+}
+
+* {box-sizing:border-box;}
+
+html {
+    scroll-behavior:smooth;
+    scrollbar-color:#594052 #080608;
+}
+
+body {
+    margin:0;
+    color:var(--white);
+    background:
+        radial-gradient(ellipse at 50% 4%,rgba(95,42,77,.20),transparent 42%),
+        radial-gradient(ellipse at 8% 65%,rgba(79,24,48,.12),transparent 35%),
+        repeating-linear-gradient(135deg,transparent 0,transparent 80px,rgba(210,190,210,.018) 81px,transparent 83px),
+        linear-gradient(180deg,#050405,#100b10 48%,#050405);
+    font-family:var(--mono);
+    overflow-x:hidden;
+}
+
+body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:10;
+    pointer-events:none;
+    opacity:.22;
+    background:repeating-linear-gradient(
+        0deg,transparent 0,transparent 3px,
+        rgba(230,210,230,.025) 4px,transparent 5px
+    );
+}
+
+a {color:var(--white);text-decoration:none;}
+
+button,select {
+    font:inherit;
+}
+
+button:focus-visible,select:focus-visible {
+    outline:2px solid var(--red-bright);
+    outline-offset:4px;
+}
+
+header {
+    min-height:76vh;
+    padding:60px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    isolation:isolate;
+    border-bottom:1px solid var(--line);
+    background:radial-gradient(ellipse at center,rgba(83,39,76,.09),transparent 62%);
+}
+
+.sigil {
+    position:absolute;
+    width:280px;
+    height:280px;
+    border:1px solid rgba(194,160,192,.24);
+    border-radius:50%;
+    box-shadow:inset 0 0 65px rgba(120,65,110,.08),0 0 80px rgba(106,27,55,.13);
+    pointer-events:none;
+}
+
+.sigil::before {
+    content:"";
+    position:absolute;
+    inset:25px;
+    border:1px solid rgba(194,160,192,.22);
+    transform:rotate(45deg);
+}
+
+.sigil::after {
+    content:"";
+    position:absolute;
+    inset:66px;
+    border:1px solid rgba(170,53,84,.4);
+    transform:rotate(-45deg);
+}
+
+.mark {
+    position:relative;
+    z-index:2;
+    color:#c49bb8;
+    font-size:12px;
+    letter-spacing:12px;
+    padding-left:12px;
+}
+
+.logo {
+    position:relative;
+    z-index:2;
+    margin-top:30px;
+    font-family:"UnifrakturCook",serif;
+    font-size:clamp(52px,10vw,88px);
+    letter-spacing:4px;
+    color:#e7dce8;
+    text-shadow:2px 2px 0 #342632,-1px 0 0 #8d7b90;
+}
+
+.subtitle {
+    position:relative;
+    z-index:2;
+    margin-top:25px;
+    color:#b1a0b2;
+    font-size:10px;
+    line-height:2.5;
+    letter-spacing:3px;
+}
+
+.motto {
+    position:relative;
+    z-index:2;
+    margin-top:42px;
+    padding:12px 18px;
+    border-top:1px solid #87304d;
+    border-bottom:1px solid rgba(190,165,190,.25);
+    font-family:var(--serif);
+    font-size:11px;
+    letter-spacing:4px;
+    color:#dfc9d9;
+}
+
+.container {
+    max-width:760px;
+    margin:auto;
+    padding:35px 20px 65px;
+}
+
+.divider {
+    text-align:center;
+    color:#b18aaa;
+    letter-spacing:12px;
+    margin:44px 0;
+    font-size:12px;
+}
+
+.section {
+    position:relative;
+    color:#e1d4e2;
+    font-family:var(--serif);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:4px;
+    padding:0 0 15px 13px;
+    margin:0 0 25px;
+    border-bottom:1px solid var(--line);
+    border-left:2px solid #8e3457;
+}
+
+.section-note {
+    margin:-12px 0 24px;
+    color:#928493;
+    font-size:10px;
+    line-height:1.9;
+    letter-spacing:1px;
+}
+
+.record {
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(ellipse at 100% 0%,rgba(109,57,100,.10),transparent 45%),
+        linear-gradient(145deg,#19121a,#090709 76%);
+    border:1px solid #413342;
+    padding:25px;
+    margin-bottom:24px;
+    box-shadow:inset 0 0 50px rgba(0,0,0,.8),0 12px 30px rgba(0,0,0,.65);
+}
+
+.record::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:55px;
+    height:2px;
+    background:linear-gradient(90deg,#a02c4d,#bda0bd,transparent);
+}
+
+.record::after {
+    content:"IX";
+    position:absolute;
+    right:-7px;
+    bottom:-35px;
+    color:rgba(177,132,176,.055);
+    font-family:"UnifrakturCook",serif;
+    font-size:110px;
+    pointer-events:none;
+}
+
+.code {
+    position:relative;
+    z-index:1;
+    color:#bd7e9c;
+    font-size:10px;
+    letter-spacing:3px;
+    overflow-wrap:anywhere;
+}
+
+.name {
+    position:relative;
+    z-index:1;
+    margin:17px 0;
+    color:#e8dce8;
+    font-family:var(--serif);
+    font-size:17px;
+    font-weight:700;
+    line-height:1.6;
+    letter-spacing:1.5px;
+}
+
+.meta {
+    position:relative;
+    z-index:1;
+    color:#b5a8b4;
+    font-size:11px;
+    line-height:2.2;
+}
+
+.micro {
+    position:relative;
+    z-index:1;
+    margin-top:17px;
+    color:#928493;
+    font-size:10px;
+    line-height:2;
+    letter-spacing:1px;
+}
+
+.status {
+    display:inline-block;
+    margin-top:17px;
+    padding:5px 8px;
+    border:1px solid #51404f;
+    border-left:2px solid #96749a;
+    color:#c7b5cb;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+.controls {
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:20px;
+}
+
+.control label {
+    display:block;
+    margin-bottom:9px;
+    color:#bd8ca8;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.control select {
+    width:100%;
+    padding:13px 10px;
+    color:#e8dce8;
+    background:#0b080c;
+    border:1px solid #594052;
+    border-left:2px solid #8e3457;
+    border-radius:0;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.access {
+    position:relative;
+    z-index:2;
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 15px;
+    border:1px solid #594052;
+    border-left:2px solid #a53b5b;
+    background:linear-gradient(135deg,rgba(118,43,77,.16),rgba(0,0,0,.2));
+    color:#e9dce9;
+    font-size:10px;
+    letter-spacing:3px;
+    cursor:pointer;
+}
+
+.access:hover {
+    background:rgba(121,38,75,.25);
+    border-color:#a34c76;
+}
+
+.result {
+    display:none;
+    margin-top:25px;
+}
+
+.result.visible {display:block;}
+
+.activity {
+    padding:19px 0;
+    border-bottom:1px solid rgba(190,165,190,.14);
+    position:relative;
+    z-index:1;
+}
+
+.activity:last-child {border-bottom:0;}
+
+.activity-title {
+    color:#e8dce8;
+    font-family:var(--serif);
+    font-size:13px;
+    line-height:1.8;
+}
+
+.activity-tag {
+    display:inline-block;
+    margin:9px 5px 8px 0;
+    padding:4px 7px;
+    border:1px solid #51404f;
+    color:#c99bb8;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+.activity p {
+    color:#b5a8b4;
+    font-size:11px;
+    line-height:2;
+}
+
+.timeline {
+    position:relative;
+    z-index:1;
+}
+
+.life-stage {
+    position:relative;
+    padding:20px 18px 20px 25px;
+    margin-bottom:13px;
+    border:1px solid #413342;
+    border-left:2px solid #87304d;
+    background:linear-gradient(110deg,rgba(105,42,76,.12),rgba(0,0,0,.2));
+    cursor:pointer;
+    transition:border-color .2s ease,background .2s ease;
+}
+
+.life-stage:hover,.life-stage.active {
+    border-color:#93627e;
+    border-left-color:#c16c91;
+    background:linear-gradient(110deg,rgba(105,42,76,.24),rgba(0,0,0,.2));
+}
+
+.stage-number {
+    color:#bd7e9c;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+.stage-name {
+    margin:10px 0;
+    color:#e8dce8;
+    font-family:var(--serif);
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.stage-age {
+    color:#a88da5;
+    font-size:10px;
+    line-height:2;
+}
+
+.stage-detail {
+    display:none;
+    padding-top:15px;
+    margin-top:13px;
+    border-top:1px solid rgba(190,165,190,.16);
+    color:#b5a8b4;
+    font-size:11px;
+    line-height:2;
+}
+
+.life-stage.active .stage-detail {display:block;}
+
+.stage-detail strong {
+    display:block;
+    color:#d4a2bc;
+    font-size:10px;
+    letter-spacing:1px;
+    margin-top:12px;
+}
+
+.timeline-instruction {
+    color:#928493;
+    font-size:10px;
+    line-height:2;
+    margin-bottom:20px;
+}
+
+.notice {
+    border-color:#49323e;
+}
+
+.notice .code {color:#d4a2bc;}
+
+.notice .name {font-size:14px;}
+
+footer {
+    position:relative;
+    border-top:1px solid var(--line);
+    text-align:center;
+    padding:45px 20px;
+    color:#99889b;
+    font-size:10px;
+    line-height:2.5;
+    letter-spacing:5px;
+}
+
+.footer-mark {
+    color:#bb7ea6;
+    font-family:"UnifrakturCook",serif;
+    font-size:28px;
+}
+
+@media(max-width:600px) {
+    header {min-height:70vh;padding:45px 16px;}
+    .sigil {width:220px;height:220px;}
+    .logo {font-size:clamp(45px,12vw,65px);}
+    .subtitle {font-size:9px;letter-spacing:2px;}
+    .motto {font-size:10px;letter-spacing:3px;}
+    .container {padding:25px 15px 45px;}
+    .section {font-size:13px;letter-spacing:2px;}
+    .record {padding:21px 18px;}
+    .controls {grid-template-columns:1fr;}
+    .name {font-size:15px;}
+}
+
+@media(prefers-reduced-motion:reduce) {
+    html {scroll-behavior:auto;}
+    * {transition:none!important;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="sigil" aria-hidden="true"></div>
+    <div class="mark">IX</div>
+    <div class="logo">IRON PAW</div>
+    <div class="subtitle">
+        COMPANION CARE DATABASE
+        <br>
+        ENRICHMENT GENERATOR / NINE LIVES TIMELINE
+    </div>
+    <div class="motto">A LIFE WORTH EXPLORING</div>
+</header>
+
+<main class="container">
+
+<div class="divider">✦ IX ✦</div>
+
+<section aria-labelledby="generator-heading">
+
+<h2 class="section" id="generator-heading">11. ENRICHMENT GENERATOR</h2>
+
+<p class="section-note">
+    INTERACTIVE COMPANION CARE / ACTIVITY DISCOVERY / AGE-APPROPRIATE PLAY
+</p>
+
+<article class="record">
+
+    <div class="code">ACTIVITY ENGINE IX-E001</div>
+    <h3 class="name">GENERATE A COMPANION ACTIVITY</h3>
+
+    <div class="meta">
+        PERSONALIZED FELINE ENRICHMENT
+        <br>
+        SELECT PARAMETERS TO GENERATE ACTIVITIES
+    </div>
+
+    <div class="controls">
+
+        <div class="control">
+            <label for="lifeStage">LIFE STAGE</label>
+            <select id="lifeStage">
+                <option value="any">ANY LIFE STAGE</option>
+                <option value="neonatal">NEONATAL</option>
+                <option value="kitten">KITTEN</option>
+                <option value="juvenile">JUVENILE</option>
+                <option value="adult">ADULT</option>
+                <option value="mature">MATURE</option>
+                <option value="senior">SENIOR</option>
+            </select>
+        </div>
+
+        <div class="control">
+            <label for="energy">ENERGY LEVEL</label>
+            <select id="energy">
+                <option value="any">ANY ENERGY</option>
+                <option value="low">LOW / GENTLE</option>
+                <option value="medium">MODERATE</option>
+                <option value="high">HIGH / ACTIVE</option>
+            </select>
+        </div>
+
+        <div class="control">
+            <label for="environment">ENVIRONMENT</label>
+            <select id="environment">
+                <option value="any">ANY ENVIRONMENT</option>
+                <option value="indoor">INDOOR</option>
+                <option value="outdoor">SECURE OUTDOOR</option>
+                <option value="both">EITHER</option>
+            </select>
+        </div>
+
+        <div class="control">
+            <label for="activityType">ACTIVITY TYPE</label>
+            <select id="activityType">
+                <option value="any">ALL ACTIVITIES</option>
+                <option value="hunt">HUNT / CHASE</option>
+                <option value="puzzle">PUZZLE / FORAGING</option>
+                <option value="sensory">SENSORY</option>
+                <option value="movement">MOVEMENT</option>
+                <option value="social">SOCIAL</option>
+                <option value="rest">REST / COMFORT</option>
+            </select>
+        </div>
+
+    </div>
+
+    <button class="access" onclick="generateActivities()">
+        GENERATE ACTIVITIES ↗
+    </button>
+
+    <button class="access" onclick="resetGenerator()">
+        RESET PARAMETERS
+    </button>
+
+    <div id="result" class="result" aria-live="polite"></div>
+
+    <div class="micro">
+        ACTIVITIES ARE SUGGESTIONS, NOT REQUIREMENTS.
+        <br>
+        ALWAYS ADAPT TO THE CAT'S INDIVIDUAL NEEDS.
+    </div>
+
+</article>
+
+</section>
+
+<div class="divider">✦ ☽ ✦</div>
+
+<section aria-labelledby="timeline-heading">
+
+<h2 class="section" id="timeline-heading">THE NINE LIVES TIMELINE</h2>
+
+<p class="section-note">
+    FELINE DEVELOPMENT / AGE CLASSIFICATION / COMPANION CARE
+</p>
+
+<p class="timeline-instruction">
+    SELECT A LIFE STAGE TO EXPAND ITS DEVELOPMENT PROFILE AND
+    AGE-APPROPRIATE ENRICHMENT RECOMMENDATIONS.
+</p>
+
+<div class="timeline" id="timeline">
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 01 / ORIGIN</div>
+    <div class="stage-name">NEONATAL</div>
+    <div class="stage-age">0–2 WEEKS</div>
+    <div class="stage-detail">
+        Newborn kittens are dependent on their mother or qualified
+        neonatal caregivers for warmth, feeding, elimination, and care.
+
+        <strong>DEVELOPMENT</strong>
+        Eyes and ears are developing. Movement is limited.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Stable warmth, appropriate feeding, gentle handling when
+        appropriate, and a clean, quiet environment.
+
+        <strong>CARE PRIORITY</strong>
+        Monitor feeding, warmth, weight gain, and elimination.
+        Neonatal kittens require specialized care.
+    </div>
+</article>
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 02 / DISCOVERY</div>
+    <div class="stage-name">EARLY KITTENHOOD</div>
+    <div class="stage-age">2–7 WEEKS</div>
+    <div class="stage-detail">
+        Kittens begin exploring their environment and developing
+        coordination and social behaviors.
+
+        <strong>DEVELOPMENT</strong>
+        Walking, sensory exploration, play, and early social learning.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Safe textures, gentle exploration, age-appropriate toys,
+        and positive human interaction.
+
+        <strong>CARE PRIORITY</strong>
+        Maintain maternal care when possible and arrange
+        veterinary guidance for development and feeding.
+    </div>
+</article>
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 03 / EXPLORATION</div>
+    <div class="stage-name">LATE KITTENHOOD</div>
+    <div class="stage-age">7–12 WEEKS</div>
+    <div class="stage-detail">
+        Curiosity and independent exploration become increasingly
+        prominent.
+
+        <strong>DEVELOPMENT</strong>
+        Coordination, social play, environmental learning.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Supervised toy play, hiding spaces, simple food puzzles
+        appropriate to developmental ability, and exploration.
+
+        <strong>CARE PRIORITY</strong>
+        Support socialization, veterinary care, and safe transitions.
+    </div>
+</article>
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 04 / EXPANSION</div>
+    <div class="stage-name">JUVENILE</div>
+    <div class="stage-age">3–6 MONTHS</div>
+    <div class="stage-detail">
+        Growing kittens develop stronger movement skills and
+        increasingly complex play behaviors.
+
+        <strong>DEVELOPMENT</strong>
+        Coordination, climbing, chasing, and independent discovery.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Interactive wand toys, tunnels, climbing opportunities,
+        supervised exploration, and beginner puzzles.
+
+        <strong>CARE PRIORITY</strong>
+        Safe play, appropriate nutrition, and continued veterinary
+        guidance.
+    </div>
+</article>
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 05 / FORMATION</div>
+    <div class="stage-name">ADOLESCENCE</div>
+    <div class="stage-age">6–12 MONTHS</div>
+    <div class="stage-detail">
+        Young cats continue developing physical abilities and
+        individual behavioral preferences.
+
+        <strong>DEVELOPMENT</strong>
+        Increasing independence, play complexity, and exploration.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Rotating toys, interactive play, puzzle feeders, climbing
+        structures, and scent exploration.
+
+        <strong>CARE PRIORITY</strong>
+        Maintain predictable routines and discuss spaying,
+        neutering, and preventive care with a veterinarian.
+    </div>
+</article>
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 06 / AUTONOMY</div>
+    <div class="stage-name">YOUNG ADULT</div>
+    <div class="stage-age">1–2 YEARS</div>
+    <div class="stage-detail">
+        Adult physical development is generally established.
+        Individual preferences become increasingly apparent.
+
+        <strong>DEVELOPMENT</strong>
+        Established movement abilities and behavioral patterns.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Hunting games, food puzzles, climbing, scent trails,
+        interactive play, and environmental variety.
+
+        <strong>CARE PRIORITY</strong>
+        Regular veterinary examinations, dental care,
+        and consistent environmental stimulation.
+    </div>
+</article>
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 07 / STABILITY</div>
+    <div class="stage-name">MATURE ADULT</div>
+    <div class="stage-age">3–6 YEARS</div>
+    <div class="stage-detail">
+        Mature cats benefit from stable routines and continued
+        opportunities for exploration.
+
+        <strong>DEVELOPMENT</strong>
+        Established adult behavior and individual activity patterns.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Rotating enrichment, interactive hunting, elevated resting
+        areas, window observation, and food-based discovery.
+
+        <strong>CARE PRIORITY</strong>
+        Maintain healthy activity, weight monitoring, and preventive
+        veterinary care.
+    </div>
+</article>
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 08 / TRANSITION</div>
+    <div class="stage-name">SENIOR</div>
+    <div class="stage-age">7–10 YEARS</div>
+    <div class="stage-detail">
+        Changes in mobility, sensory ability, and health may begin
+        to influence daily activity.
+
+        <strong>DEVELOPMENT</strong>
+        Individual aging patterns and potential changes in mobility.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Low-impact play, accessible resting areas, gentle puzzles,
+        familiar scents, and shorter interactive sessions.
+
+        <strong>CARE PRIORITY</strong>
+        Monitor behavioral changes and schedule appropriate
+        veterinary examinations.
+    </div>
+</article>
+
+<article class="life-stage" onclick="selectStage(this)">
+    <div class="stage-number">LIFE 09 / CONTINUITY</div>
+    <div class="stage-name">SUPER SENIOR</div>
+    <div class="stage-age">11+ YEARS</div>
+    <div class="stage-detail">
+        Older cats may benefit from additional environmental
+        accessibility and individualized support.
+
+        <strong>DEVELOPMENT</strong>
+        Aging-related changes vary considerably between individuals.
+
+        <strong>ENRICHMENT PROFILE</strong>
+        Comfortable bedding, accessible food and water, gentle
+        sensory activities, familiar interaction, and low-impact play.
+
+        <strong>CARE PRIORITY</strong>
+        Prioritize comfort, veterinary monitoring, mobility support,
+        and quality of life.
+    </div>
+</article>
+
+</div>
+</section>
+
+<div class="divider">✦ IX ✦</div>
+
+<section aria-labelledby="care-heading">
+
+<h2 class="section" id="care-heading">THE ENRICHMENT FIELD MANUAL</h2>
+
+<p class="section-note">
+    COMPANION CARE / RESPONSIBLE PLAY / ENVIRONMENTAL SAFETY
+</p>
+
+<article class="record">
+    <div class="code">CARE PROTOCOL IX-C001</div>
+    <h3 class="name">THE FIVE ENRICHMENT DOMAINS</h3>
+
+    <div class="activity">
+        <div class="activity-title">01 / PREDATORY PLAY</div>
+        <p>
+            Wand toys, supervised chase games, and simulated hunting
+            activities allow cats to express natural play behaviors.
+        </p>
+    </div>
+
+    <div class="activity">
+        <div class="activity-title">02 / ENVIRONMENTAL EXPLORATION</div>
+        <p>
+            Cat-safe tunnels, boxes, shelves, hiding places, and
+            observation areas provide opportunities for discovery.
+        </p>
+    </div>
+
+    <div class="activity">
+        <div class="activity-title">03 / FOOD DISCOVERY</div>
+        <p>
+            Appropriate food puzzles and supervised foraging activities
+            can introduce variety to feeding routines.
+        </p>
+    </div>
+
+    <div class="activity">
+        <div class="activity-title">04 / SENSORY STIMULATION</div>
+        <p>
+            Safe textures, familiar scents, visual observation,
+            and gentle environmental changes support exploration.
+        </p>
+    </div>
+
+    <div class="activity">
+        <div class="activity-title">05 / SOCIAL CONNECTION</div>
+        <p>
+            Respectful interaction, companionship, and opportunities
+            to choose contact support positive social experiences.
+        </p>
+    </div>
+</article>
+
+<article class="record notice">
+    <div class="code">SAFETY NOTICE IX-S001</div>
+    <h3 class="name">RESPONSIBLE ENRICHMENT</h3>
+    <div class="micro">
+        NEVER FORCE PARTICIPATION.
+        <br>
+        INSPECT TOYS FOR DAMAGE AND SMALL DETACHABLE PARTS.
+        <br>
+        SUPERVISE STRING, RIBBON, AND WAND TOYS.
+        <br>
+        AVOID TOXIC PLANTS AND UNSAFE SCENTS.
+        <br>
+        PROVIDE ACCESS TO FRESH WATER AND RESTING SPACES.
+        <br>
+        ADAPT ACTIVITIES TO MOBILITY AND HEALTH NEEDS.
+        <br>
+        CONSULT A VETERINARIAN WHEN HEALTH CONDITIONS
+        AFFECT ACTIVITY OR BEHAVIOR.
+    </div>
+</article>
+
+</section>
+
+<div class="divider">✦ ☽ ✦</div>
+
+<section aria-labelledby="notice-heading">
+
+<h2 class="section" id="notice-heading">ARCHIVE NOTICE</h2>
+
+<article class="record">
+    <div class="code">SYSTEM NOTE IX-N011</div>
+    <h3 class="name">AN INDIVIDUALIZED CARE RESOURCE</h3>
+    <div class="meta">
+        AGE RANGES ARE APPROXIMATE
+        <br>
+        DEVELOPMENT VARIES BETWEEN INDIVIDUAL CATS
+        <br>
+        ENRICHMENT MUST BE ADAPTED TO THE ANIMAL
+    </div>
+    <div class="micro">
+        THE NINE LIVES TIMELINE IS AN EDUCATIONAL
+        NINE-STAGE ORGANIZATION OF FELINE DEVELOPMENT.
+        IT DOES NOT REPRESENT NINE BIOLOGICAL LIFETIMES.
+        THE GENERATOR PROVIDES GENERAL ACTIVITY IDEAS
+        AND DOES NOT REPLACE VETERINARY ADVICE.
+    </div>
+</article>
+
+</section>
+
+</main>
+
+<footer>
+    IRON PAW
+    <br>
+    THE NINTH LIFE ARCHIVE
+    <br><br>
+    <div class="footer-mark">IX</div>
+    <br>
+    FORGED FOR THE FORGOTTEN
+</footer>
+
+<script>
+
+/* ==========================================
+   IRON PAW ACTIVITY DATABASE
+========================================== */
+
+const activities = [
+
+{
+name:"THE HIDDEN PREY",
+type:"hunt",
+energy:"high",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature"],
+description:"Move a wand toy across the floor, allowing your cat to stalk, chase, and catch it. Finish with an opportunity to capture the toy.",
+duration:"5–10 MINUTES",
+materials:"WAND TOY",
+benefit:"PREDATORY PLAY"
+},
+
+{
+name:"THE BOX FORTRESS",
+type:"movement",
+energy:"medium",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature","senior"],
+description:"Arrange clean cardboard boxes with safe openings and different heights. Allow your cat to explore and choose a resting place.",
+duration:"10–20 MINUTES",
+materials:"CARDBOARD BOXES",
+benefit:"EXPLORATION"
+},
+
+{
+name:"THE SCENT ARCHIVE",
+type:"sensory",
+energy:"low",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature","senior"],
+description:"Introduce a familiar, cat-safe fabric or object with a new environmental texture. Allow voluntary investigation.",
+duration:"5–10 MINUTES",
+materials:"SAFE FABRIC",
+benefit:"SENSORY DISCOVERY"
+},
+
+{
+name:"THE FORAGING TRAIL",
+type:"puzzle",
+energy:"medium",
+environment:"indoor",
+stages:["juvenile","adult","mature","senior"],
+description:"Place a few pieces of your cat's regular food in accessible locations. Encourage exploration without making the search difficult.",
+duration:"5–15 MINUTES",
+materials:"REGULAR CAT FOOD",
+benefit:"FOOD DISCOVERY"
+},
+
+{
+name:"THE WINDOW OBSERVATORY",
+type:"sensory",
+energy:"low",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature","senior"],
+description:"Provide a secure, comfortable observation point where your cat can watch outdoor activity. Ensure windows and screens are secure.",
+duration:"FLEXIBLE",
+materials:"SECURE WINDOW AREA",
+benefit:"VISUAL STIMULATION"
+},
+
+{
+name:"THE TUNNEL NETWORK",
+type:"movement",
+energy:"high",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature"],
+description:"Arrange cat-safe tunnels to create a simple exploration route. Place familiar toys at the entrances.",
+duration:"10–15 MINUTES",
+materials:"CAT TUNNEL",
+benefit:"MOVEMENT AND EXPLORATION"
+},
+
+{
+name:"THE PUZZLE FEEDER",
+type:"puzzle",
+energy:"medium",
+environment:"indoor",
+stages:["juvenile","adult","mature","senior"],
+description:"Introduce a simple puzzle feeder using a portion of regular food. Begin with an easy arrangement and increase complexity only if appropriate.",
+duration:"5–15 MINUTES",
+materials:"CAT-SAFE FOOD PUZZLE",
+benefit:"PROBLEM SOLVING"
+},
+
+{
+name:"THE COMPANION SESSION",
+type:"social",
+energy:"low",
+environment:"both",
+stages:["kitten","juvenile","adult","mature","senior"],
+description:"Spend a quiet period near your cat. Offer gentle interaction if welcomed, or allow independent companionship.",
+duration:"5–15 MINUTES",
+materials:"NONE",
+benefit:"SOCIAL CONNECTION"
+},
+
+{
+name:"THE GENTLE PURSUIT",
+type:"hunt",
+energy:"low",
+environment:"indoor",
+stages:["senior","mature"],
+description:"Move a lightweight toy slowly along the floor, allowing your cat to observe or follow at their own pace.",
+duration:"3–5 MINUTES",
+materials:"LIGHTWEIGHT TOY",
+benefit:"LOW-IMPACT PLAY"
+},
+
+{
+name:"THE RESTING SANCTUARY",
+type:"rest",
+energy:"low",
+environment:"both",
+stages:["kitten","juvenile","adult","mature","senior"],
+description:"Prepare a quiet, comfortable resting location with familiar bedding and easy access. Allow your cat to use it voluntarily.",
+duration:"FLEXIBLE",
+materials:"COMFORTABLE BEDDING",
+benefit:"REST AND SECURITY"
+},
+
+{
+name:"THE TREASURE SEARCH",
+type:"puzzle",
+energy:"medium",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature"],
+description:"Hide a small number of pieces of regular food in easy-to-find locations around a safe room.",
+duration:"5–10 MINUTES",
+materials:"REGULAR CAT FOOD",
+benefit:"FORAGING"
+},
+
+{
+name:"THE CLIMBING STATION",
+type:"movement",
+energy:"high",
+environment:"indoor",
+stages:["juvenile","adult","mature"],
+description:"Provide a stable, appropriately sized climbing structure with accessible levels and secure surfaces.",
+duration:"FLEXIBLE",
+materials:"STABLE CAT TREE",
+benefit:"PHYSICAL ACTIVITY"
+},
+
+{
+name:"THE SECURE GARDEN",
+type:"sensory",
+energy:"low",
+environment:"outdoor",
+stages:["juvenile","adult","mature","senior"],
+description:"If a properly enclosed and supervised outdoor space is available, allow exploration of safe surfaces and cat-safe plants.",
+duration:"5–15 MINUTES",
+materials:"SECURE CATIO",
+benefit:"OUTDOOR EXPLORATION"
+},
+
+{
+name:"THE TEXTURE COLLECTION",
+type:"sensory",
+energy:"low",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature","senior"],
+description:"Offer several clean, safe surfaces such as a soft blanket, cardboard, and a textured mat. Let your cat investigate voluntarily.",
+duration:"FLEXIBLE",
+materials:"SAFE TEXTURES",
+benefit:"TACTILE EXPLORATION"
+},
+
+{
+name:"THE TOY ROTATION",
+type:"hunt",
+energy:"medium",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature"],
+description:"Rotate a small selection of safe toys to introduce novelty. Keep damaged toys out of circulation.",
+duration:"5–10 MINUTES",
+materials:"CAT TOYS",
+benefit:"PLAY VARIETY"
+},
+
+{
+name:"THE SENIOR COMFORT ROUTE",
+type:"rest",
+energy:"low",
+environment:"indoor",
+stages:["senior","mature"],
+description:"Arrange familiar resting places, food, water, and litter access to reduce unnecessary climbing and difficult movement.",
+duration:"FLEXIBLE",
+materials:"LOW-ACCESS RESTING AREAS",
+benefit:"ENVIRONMENTAL ACCESSIBILITY"
+},
+
+{
+name:"THE OBSERVATION GAME",
+type:"sensory",
+energy:"low",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature","senior"],
+description:"Allow your cat to observe a safe moving object or changing view without requiring physical participation.",
+duration:"5–10 MINUTES",
+materials:"SAFE VISUAL STIMULUS",
+benefit:"VISUAL ENRICHMENT"
+},
+
+{
+name:"THE GENTLE GREETING",
+type:"social",
+energy:"low",
+environment:"both",
+stages:["kitten","juvenile","adult","mature","senior"],
+description:"Create a predictable greeting routine. Let your cat approach, sniff, or move away without pressure.",
+duration:"3–5 MINUTES",
+materials:"NONE",
+benefit:"TRUST AND FAMILIARITY"
+},
+
+{
+name:"THE MINIATURE HUNT",
+type:"hunt",
+energy:"medium",
+environment:"indoor",
+stages:["kitten","juvenile","adult","mature"],
+description:"Use a lightweight toy to simulate a short hunting sequence. Allow your cat to pause and catch the toy.",
+duration:"5–10 MINUTES",
+materials:"LIGHTWEIGHT CAT TOY",
+benefit:"HUNTING BEHAVIOR"
+},
+
+{
+name:"THE QUIET RETREAT",
+type:"rest",
+energy:"low",
+environment:"indoor",
+stages:["senior","mature","adult","kitten","juvenile"],
+description:"Create a quiet hiding space where your cat can retreat without interruption. Ensure it is accessible and well ventilated.",
+duration:"FLEXIBLE",
+materials:"SAFE HIDING SPACE",
+benefit:"REST AND CHOICE"
+}
+
+];
+
+/* ==========================================
+   ACTIVITY GENERATOR
+========================================== */
+
+function generateActivities() {
+
+    const stage = document.getElementById("lifeStage").value;
+    const energy = document.getElementById("energy").value;
+    const environment = document.getElementById("environment").value;
+    const type = document.getElementById("activityType").value;
+
+    let filtered = activities.filter(activity => {
+
+        const stageMatch =
+            stage === "any" || activity.stages.includes(stage);
+
+        const energyMatch =
+            energy === "any" || activity.energy === energy;
+
+        const environmentMatch =
+            environment === "any" ||
+            environment === "both" ||
+            activity.environment === "both" ||
+            activity.environment === environment;
+
+        const typeMatch =
+            type === "any" || activity.type === type;
+
+        return stageMatch && energyMatch && environmentMatch && typeMatch;
+
+    });
+
+    const result = document.getElementById("result");
+
+    if (filtered.length === 0) {
+        result.classList.add("visible");
+        result.innerHTML = `
+            <div class="activity">
+                <div class="activity-title">NO MATCHING RECORDS</div>
+                <p>
+                    No activities match the selected combination.
+                    Adjust your parameters and try again.
+                </p>
+            </div>`;
+        return;
+    }
+
+    // Randomize and return up to four records.
+    filtered = filtered.sort(() => Math.random() - 0.5).slice(0,4);
+
+    let html = `
+        <div class="code">GENERATION COMPLETE / ${filtered.length} RECORDS</div>
+        <h3 class="name">YOUR ENRICHMENT SELECTION</h3>
+    `;
+
+    filtered.forEach((activity,index) => {
+
+        html += `
+        <div class="activity">
+            <div class="code">ACTIVITY RECORD / E-${String(index+1).padStart(3,"0")}</div>
+
+            <div class="activity-title">${activity.name}</div>
+
+            <span class="activity-tag">${activity.type.toUpperCase()}</span>
+            <span class="activity-tag">${activity.energy.toUpperCase()} ENERGY</span>
+
+            <p>${activity.description}</p>
+
+            <div class="micro">
+                DURATION: ${activity.duration}
+                <br>
+                MATERIALS: ${activity.materials}
+                <br>
+                DOMAIN: ${activity.benefit}
+            </div>
+        </div>
+        `;
+    });
+
+    html += `
+        <div class="micro">
+            ${filtered.length} ACTIVITY RECORDS GENERATED.
+            <br>
+            SELECT ACTIVITIES BASED ON YOUR CAT'S COMFORT AND RESPONSE.
+        </div>
+    `;
+
+    result.innerHTML = html;
+    result.classList.add("visible");
+}
+
+function resetGenerator() {
+
+    document.getElementById("lifeStage").value = "any";
+    document.getElementById("energy").value = "any";
+    document.getElementById("environment").value = "any";
+    document.getElementById("activityType").value = "any";
+
+    const result = document.getElementById("result");
+    result.innerHTML = "";
+    result.classList.remove("visible");
+
+}
+
+/* ==========================================
+   NINE LIVES TIMELINE
+========================================== */
+
+function selectStage(element) {
+
+    const stages = document.querySelectorAll(".life-stage");
+
+    stages.forEach(stage => {
+        if (stage !== element) {
+            stage.classList.remove("active");
+        }
+    });
+
+    element.classList.toggle("active");
+
+}
+
+/* ==========================================
+   INITIALIZATION
+========================================== */
+
+</script>
+
+</body>
+</html>
