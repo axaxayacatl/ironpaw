@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050405">
+
+<title>IRON PAW — Kitten Age Calculator</title>
+<meta name="description" content="IRON PAW kitten development and age estimation resource.">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=UnifrakturCook:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --void: #050405;
+    --iron: #100b10;
+    --steel: #39313b;
+    --silver: #a7a0aa;
+    --white: #e8e0e9;
+    --line: rgba(190, 165, 190, .22);
+    --red: #711c32;
+    --red-bright: #b72c49;
+    --violet: #76516f;
+    --mono: "Space Mono", monospace;
+    --serif: "Cinzel", serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: #594052 #080608;
+}
+
+body {
+    margin: 0;
+    color: var(--white);
+    background:
+        radial-gradient(ellipse at 50% 4%, rgba(95,42,77,.20), transparent 42%),
+        radial-gradient(ellipse at 8% 65%, rgba(79,24,48,.12), transparent 35%),
+        repeating-linear-gradient(
+            135deg,
+            transparent 0,
+            transparent 80px,
+            rgba(210,190,210,.018) 81px,
+            transparent 83px
+        ),
+        linear-gradient(180deg, #050405, #100b10 48%, #050405);
+    font-family: var(--mono);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    opacity: .22;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 3px,
+        rgba(230,210,230,.025) 4px,
+        transparent 5px
+    );
+}
+
+a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--red-bright);
+    outline-offset: 5px;
+}
+
+/* HEADER */
+
+header {
+    min-height: 420px;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    isolation: isolate;
+    border-bottom: 1px solid var(--line);
+    background:
+        radial-gradient(ellipse at center, rgba(83,39,76,.09), transparent 62%),
+        linear-gradient(180deg, transparent, rgba(0,0,0,.38));
+}
+
+.sigil {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(194,160,192,.24);
+    border-radius: 50%;
+    box-shadow:
+        inset 0 0 65px rgba(120,65,110,.08),
+        0 0 80px rgba(106,27,55,.13);
+    z-index: -1;
+}
+
+.sigil::before {
+    content: "";
+    position: absolute;
+    inset: 25px;
+    border: 1px solid rgba(194,160,192,.22);
+    transform: rotate(45deg);
+}
+
+.sigil::after {
+    content: "";
+    position: absolute;
+    inset: 66px;
+    border: 1px solid rgba(170,53,84,.4);
+    transform: rotate(-45deg);
+}
+
+.mark {
+    color: #c49bb8;
+    font-size: 12px;
+    letter-spacing: 12px;
+    padding-left: 12px;
+}
+
+.logo {
+    margin-top: 25px;
+    font-family: "UnifrakturCook", serif;
+    font-size: clamp(52px, 10vw, 88px);
+    letter-spacing: 4px;
+    color: #e7dce8;
+    text-shadow:
+        2px 2px 0 #342632,
+        -1px 0 0 #8d7b90,
+        0 0 30px rgba(167,109,161,.13);
+}
+
+.subtitle {
+    margin-top: 22px;
+    color: #b1a0b2;
+    font-size: 10px;
+    line-height: 2.4;
+    letter-spacing: 3px;
+}
+
+.motto {
+    margin-top: 35px;
+    padding: 12px 18px;
+    border-top: 1px solid #87304d;
+    border-bottom: 1px solid rgba(190,165,190,.25);
+    font-family: var(--serif);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #dfc9d9;
+}
+
+/* LAYOUT */
+
+.container {
+    max-width: 760px;
+    margin: auto;
+    padding: 35px 20px 65px;
+}
+
+.divider {
+    text-align: center;
+    color: #b18aaa;
+    letter-spacing: 12px;
+    margin: 42px 0;
+    font-size: 12px;
+}
+
+.section {
+    position: relative;
+    color: #e1d4e2;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    padding: 0 0 15px 13px;
+    margin: 0 0 25px;
+    border-bottom: 1px solid var(--line);
+    border-left: 2px solid #8e3457;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 34%;
+    height: 1px;
+    background: linear-gradient(90deg, #8e3457, transparent);
+}
+
+.section-note {
+    margin: -12px 0 24px;
+    color: #928493;
+    font-size: 10px;
+    line-height: 1.9;
+    letter-spacing: 1px;
+}
+
+/* RECORDS */
+
+.record {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 100% 0%, rgba(109,57,100,.10), transparent 45%),
+        linear-gradient(145deg, #19121a, #090709 76%);
+    border: 1px solid #413342;
+    padding: 25px;
+    margin-bottom: 24px;
+    box-shadow:
+        inset 0 0 50px rgba(0,0,0,.8),
+        inset 0 1px rgba(220,190,220,.04),
+        0 12px 30px rgba(0,0,0,.65);
+}
+
+.record::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55px;
+    height: 2px;
+    background: linear-gradient(90deg, #a02c4d, #bda0bd, transparent);
+}
+
+.code {
+    color: #bd7e9c;
+    font-size: 10px;
+    letter-spacing: 3px;
+    overflow-wrap: anywhere;
+}
+
+.name {
+    margin: 17px 0;
+    color: #e8dce8;
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: 1.5px;
+}
+
+.meta {
+    color: #b5a8b4;
+    font-size: 11px;
+    line-height: 2.2;
+}
+
+.micro {
+    margin-top: 17px;
+    color: #928493;
+    font-size: 10px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+/* CALCULATOR */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 10px;
+    color: #d9c9d9;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    line-height: 1.8;
+}
+
+select,
+input {
+    width: 100%;
+    min-height: 45px;
+    padding: 11px;
+    border: 1px solid #594052;
+    border-left: 2px solid #a53b5b;
+    background: #0a080b;
+    color: #e8dce8;
+    font-family: var(--mono);
+    font-size: 11px;
+    border-radius: 0;
+}
+
+select option {
+    background: #100b10;
+    color: #e8dce8;
+}
+
+input::placeholder {
+    color: #766b78;
+}
+
+.hint {
+    margin-top: 8px;
+    color: #928493;
+    font-size: 9px;
+    line-height: 1.8;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+button {
+    padding: 12px 16px;
+    border: 1px solid #594052;
+    border-left: 2px solid #a53b5b;
+    background: linear-gradient(135deg, rgba(118,43,77,.2), rgba(0,0,0,.2));
+    color: #e9dce9;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(121,38,75,.25);
+    border-color: #a34c76;
+}
+
+button.secondary {
+    border-left-color: #96749a;
+    background: transparent;
+    color: #c7b5cb;
+}
+
+/* RESULTS */
+
+.result {
+    display: none;
+    margin-top: 25px;
+    padding: 22px;
+    border: 1px solid #76516f;
+    background: rgba(87,44,77,.12);
+}
+
+.result.show {
+    display: block;
+}
+
+.result-kicker {
+    color: #bd7e9c;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.result-age {
+    margin: 15px 0;
+    color: #f0ddeb;
+    font-family: var(--serif);
+    font-size: clamp(23px, 5vw, 34px);
+    line-height: 1.5;
+}
+
+.result p,
+.result li {
+    color: #c2b5c2;
+    font-size: 11px;
+    line-height: 2;
+}
+
+.result ul {
+    padding-left: 18px;
+}
+
+.result-actions {
+    margin-top: 18px;
+}
+
+/* DEVELOPMENT TABLE */
+
+.milestone {
+    padding: 0 0 18px;
+    margin: 0 0 18px;
+    border-bottom: 1px solid rgba(190,165,190,.12);
+}
+
+.milestone:last-child {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.milestone strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #e4d6e4;
+    font-family: var(--serif);
+    font-size: 13px;
+}
+
+.milestone span {
+    color: #b6a9b7;
+    font-size: 10px;
+    line-height: 2;
+}
+
+.notice {
+    border-left: 2px solid #a37b8d;
+    padding-left: 14px;
+    color: #b6a9b7;
+    font-size: 10px;
+    line-height: 2;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--line);
+    text-align: center;
+    padding: 45px 20px;
+    color: #99889b;
+    font-size: 10px;
+    line-height: 2.5;
+    letter-spacing: 5px;
+}
+
+.footer-mark {
+    color: #bb7ea6;
+    font-family: "UnifrakturCook", serif;
+    font-size: 28px;
+}
+
+@media (max-width: 600px) {
+    header {
+        min-height: 350px;
+        padding: 45px 16px;
+    }
+
+    .sigil {
+        width: 210px;
+        height: 210px;
+    }
+
+    .logo {
+        font-size: clamp(45px, 12vw, 65px);
+    }
+
+    .subtitle {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .motto {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .container {
+        padding: 25px 15px 45px;
+    }
+
+    .section {
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+
+    .record {
+        padding: 21px 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="sigil" aria-hidden="true"></div>
+    <div class="mark">IX</div>
+    <div class="logo">IRON PAW</div>
+
+    <div class="subtitle">
+        THE NINTH LIFE ARCHIVE
+        <br>
+        KITTEN DEVELOPMENT / AGE ESTIMATION RESOURCE
+    </div>
+
+    <div class="motto">SMALL LIVES. CRITICAL MILESTONES.</div>
+</header>
+
+<main class="container">
+
+    <div class="divider">✦ IX ✦</div>
+
+    <section>
+        <h2 class="section">KITTEN AGE CALCULATOR</h2>
+
+        <p class="section-note">
+            DEVELOPMENTAL OBSERVATIONS / AGE ESTIMATION / FIELD REFERENCE
+        </p>
+
+        <article class="record">
+
+            <div class="code">ASSESSMENT TOOL IX-K001</div>
+
+            <h3 class="name">ESTIMATE A KITTEN'S AGE</h3>
+
+            <p class="meta">
+                Select the developmental characteristics that best describe
+                the kitten. Leave uncertain observations at their default setting.
+            </p>
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="eyes">01 / EYE DEVELOPMENT</label>
+                    <select id="eyes">
+                        <option value="unknown">Not sure</option>
+                        <option value="closed">Both eyes closed</option>
+                        <option value="opening">Eyes partly opening</option>
+                        <option value="openblue">Eyes open, appear blue</option>
+                        <option value="changing">Eye color beginning to change</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="ears">02 / EAR POSITION</label>
+                    <select id="ears">
+                        <option value="unknown">Not sure</option>
+                        <option value="folded">Folded close to head</option>
+                        <option value="unfolding">Beginning to unfold</option>
+                        <option value="upright">Mostly upright</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="movement">03 / MOBILITY</label>
+                    <select id="movement">
+                        <option value="unknown">Not sure</option>
+                        <option value="crawl">Mostly crawls or wriggles</option>
+                        <option value="wobbly">Stands or walks unsteadily</option>
+                        <option value="steady">Walks steadily</option>
+                        <option value="active">Runs, climbs, and plays</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="teeth">04 / TEETH</label>
+                    <select id="teeth">
+                        <option value="unknown">Not sure</option>
+                        <option value="none">No visible teeth</option>
+                        <option value="incisors">Tiny front teeth visible</option>
+                        <option value="canines">Small canine teeth visible</option>
+                        <option value="full">Most baby teeth visible</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="feeding">05 / FEEDING DEVELOPMENT</label>
+                    <select id="feeding">
+                        <option value="unknown">Not sure</option>
+                        <option value="nursing">Nursing / milk replacer</option>
+                        <option value="tasting">Exploring soft kitten food</option>
+                        <option value="weaning">Eating soft food, may still nurse</option>
+                        <option value="independent">Eating independently</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="weight">06 / WEIGHT (OPTIONAL)</label>
+                    <input
+                        type="number"
+                        id="weight"
+                        min="1"
+                        max="5000"
+                        placeholder="Weight in grams"
+                    >
+                    <p class="hint">
+                        Weight is recorded as supplementary information.
+                        It cannot independently establish age.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="actions">
+                <button type="button" onclick="calculateAge()">
+                    ESTIMATE AGE ↗
+                </button>
+
+                <button type="button" class="secondary" onclick="resetCalculator()">
+                    RESET FORM
+                </button>
+            </div>
+
+            <div class="result" id="result" aria-live="polite">
+
+                <div class="result-kicker">
+                    ESTIMATED DEVELOPMENTAL RANGE
+                </div>
+
+                <div class="result-age" id="ageText"></div>
+
+                <p id="reasonText"></p>
+
+                <div class="result-kicker">
+                    CARE CONSIDERATIONS
+                </div>
+
+                <ul id="careList"></ul>
+
+                <div class="result-actions">
+                    <button type="button" onclick="window.print()">
+                        PRINT ASSESSMENT
+                    </button>
+                </div>
+
+            </div>
+
+        </article>
+    </section>
+
+    <div class="divider">✦ ☽ ✦</div>
+
+    <section>
+        <h2 class="section">DEVELOPMENTAL REFERENCE</h2>
+
+        <p class="section-note">
+            FELINE GROWTH / APPROXIMATE DEVELOPMENTAL MILESTONES
+        </p>
+
+        <article class="record">
+
+            <div class="code">REFERENCE TABLE IX-K002</div>
+
+            <div class="milestone">
+                <strong>00–01 WEEK / NEONATAL</strong>
+                <span>
+                    Eyes are closed, ears are folded, and movement is
+                    primarily crawling and wriggling. Kittens depend
+                    entirely on their mother or an appropriate neonatal
+                    care plan.
+                </span>
+            </div>
+
+            <div class="milestone">
+                <strong>01–02 WEEKS / EARLY DEVELOPMENT</strong>
+                <span>
+                    Eyes begin opening and ears gradually unfold.
+                    Walking is not yet coordinated.
+                </span>
+            </div>
+
+            <div class="milestone">
+                <strong>02–03 WEEKS / SENSORY DEVELOPMENT</strong>
+                <span>
+                    Eyes are generally open. Ears become more upright.
+                    Kittens begin attempting to stand and walk.
+                </span>
+            </div>
+
+            <div class="milestone">
+                <strong>03–04 WEEKS / MOBILITY</strong>
+                <span>
+                    Walking becomes steadier. Baby teeth begin appearing.
+                    Curiosity and environmental exploration increase.
+                </span>
+            </div>
+
+            <div class="milestone">
+                <strong>04–06 WEEKS / SOCIAL DEVELOPMENT</strong>
+                <span>
+                    Play and exploration increase. Kittens may begin
+                    transitioning toward soft kitten food while continuing
+                    to nurse.
+                </span>
+            </div>
+
+            <div class="milestone">
+                <strong>06–08 WEEKS / WEANING</strong>
+                <span>
+                    Many kittens eat independently and have most or all
+                    of their baby teeth. Individual development varies.
+                </span>
+            </div>
+
+            <div class="milestone">
+                <strong>08+ WEEKS / JUVENILE DEVELOPMENT</strong>
+                <span>
+                    Kittens are typically mobile, playful, and eating
+                    independently. Continued physical and social development
+                    follows.
+                </span>
+            </div>
+
+        </article>
+    </section>
+
+    <div class="divider">✦ IX ✦</div>
+
+    <section>
+        <h2 class="section">FIELD NOTICE</h2>
+
+        <article class="record">
+
+            <div class="code">CARE NOTICE IX-K003</div>
+
+            <h3 class="name">
+                AGE ESTIMATES ARE NOT A SUBSTITUTE FOR EXAMINATION
+            </h3>
+
+            <p class="notice">
+                Developmental characteristics overlap and may differ
+                between kittens. Weight alone cannot establish age.
+                A veterinarian or experienced kitten-care professional
+                can assess age, hydration, health, and feeding requirements
+                more reliably.
+            </p>
+
+            <p class="meta" style="margin-top:20px">
+                URGENT WARNING: A kitten that is cold, weak, struggling
+                to breathe, unresponsive, or unable to nurse needs prompt
+                veterinary or rescue assistance. Do not delay care to
+                complete this calculator.
+            </p>
+
+            <a class="access"
+               href="https://www.alleycat.org/resources/kitten-progression/"
+               target="_blank"
+               rel="noopener noreferrer">
+                KITTEN DEVELOPMENT RESOURCE ↗
+            </a>
+
+        </article>
+    </section>
+
+</main>
+
+<footer>
+    IRON PAW
+    <br>
+    THE NINTH LIFE ARCHIVE
+    <br><br>
+    <div class="footer-mark">IX</div>
+    <br>
+    FORGED FOR THE FORGOTTEN
+</footer>
+
+<script>
+
+/* =====================================
+   IRON PAW / KITTEN AGE CALCULATOR
+   ASSESSMENT TOOL IX-K001
+===================================== */
+
+const developmentalRanges = {
+
+    eyes: {
+        closed: [0, 1],
+        opening: [1, 2],
+        openblue: [2, 8],
+        changing: [6, 12]
+    },
+
+    ears: {
+        folded: [0, 1],
+        unfolding: [1, 2],
+        upright: [2, 8]
+    },
+
+    movement: {
+        crawl: [0, 2],
+        wobbly: [2, 4],
+        steady: [3, 6],
+        active: [5, 12]
+    },
+
+    teeth: {
+        none: [0, 2],
+        incisors: [2, 4],
+        canines: [3, 5],
+        full: [6, 12]
+    },
+
+    feeding: {
+        nursing: [0, 4],
+        tasting: [3, 6],
+        weaning: [4, 8],
+        independent: [6, 12]
+    }
+
+};
+
+const fieldNames = {
+    eyes: "eye development",
+    ears: "ear position",
+    movement: "mobility",
+    teeth: "teeth development",
+    feeding: "feeding development"
+};
+
+/* AGE FORMATTER */
+
+function formatAge(weeks) {
+
+    if (weeks < 1) {
+        return "Under one week";
+    }
+
+    if (weeks < 8) {
+        return Math.round(weeks) + " weeks";
+    }
+
+    if (weeks < 52) {
+        const months = Math.round(weeks / 4.345);
+        return "Approximately " + months + " months";
+    }
+
+    return "12 months or older";
+}
+
+/* CALCULATOR */
+
+function calculateAge() {
+
+    const observations = [];
+
+    Object.keys(developmentalRanges).forEach(field => {
+
+        const value = document.getElementById(field).value;
+
+        if (value !== "unknown") {
+
+            observations.push({
+                field: field,
+                value: value,
+                range: developmentalRanges[field][value]
+            });
+
+        }
+
+    });
+
+    const weightInput = document.getElementById("weight").value;
+
+    const weight = Number(weightInput);
+
+    const result = document.getElementById("result");
+    const ageText = document.getElementById("ageText");
+    const reasonText = document.getElementById("reasonText");
+    const careList = document.getElementById("careList");
+
+    result.classList.add("show");
+
+    /* NO OBSERVATIONS */
+
+    if (
+        observations.length === 0 &&
+        weightInput === ""
+    ) {
+
+        ageText.textContent = "MORE OBSERVATIONS NEEDED";
+
+        reasonText.textContent =
+            "Select at least one developmental characteristic. " +
+            "Weight alone cannot establish a kitten's age.";
+
+        careList.innerHTML =
+            "<li>Observe eye development, mobility, teeth, and feeding behavior.</li>";
+
+        return;
+    }
+
+    /* COMBINE DEVELOPMENTAL OBSERVATIONS */
+
+    let low = 0;
+    let high = 12;
+
+    if (observations.length > 0) {
+
+        const lowerBounds = observations
+            .map(item => item.range[0])
+            .sort((a, b) => a - b);
+
+        const upperBounds = observations
+            .map(item => item.range[1])
+            .sort((a, b) => a - b);
+
+        const middle = Math.floor(observations.length / 2);
+
+        low = lowerBounds[middle];
+        high = upperBounds[middle];
+
+        /*
+           Expand the estimate when observations conflict.
+           This avoids presenting false precision.
+        */
+
+        if (low > high) {
+            low = Math.min(...lowerBounds);
+            high = Math.max(...upperBounds);
+        }
+
+        low = Math.max(0, low - 1);
+        high = Math.min(12, high + 1);
+
+    }
+
+    /* DISPLAY AGE */
+
+    const lowWeeks = low * 4.345;
+    const highWeeks = high * 4.345;
+
+    ageText.textContent =
+        "Approximately " +
+        formatAge(lowWeeks) +
+        " – " +
+        formatAge(highWeeks);
+
+    /* OBSERVATION REPORT */
+
+    const usedFields = observations.map(item => {
+        return fieldNames[item.field];
+    });
+
+    let report = "";
+
+    if (usedFields.length > 0) {
+
+        report =
+            "Assessment based on: " +
+            usedFields.join(", ") +
+            ".";
+
+    }
+
+    if (weightInput !== "" && weight > 0) {
+
+        report +=
+            " Recorded weight: " +
+            weight +
+            " grams. Weight is supplementary information and is not used as an independent age measurement.";
+
+    }
+
+    reasonText.textContent = report;
+
+    /* CARE GUIDANCE */
+
+    const care = [];
+
+    if (lowWeeks < 4) {
+
+        care.push(
+            "Very young kittens need age-appropriate warmth, frequent feeding, and close monitoring."
+        );
+
+        care.push(
+            "Contact a veterinarian or experienced neonatal rescue for an appropriate feeding and care plan."
+        );
+
+    }
+
+    if (lowWeeks < 8) {
+
+        care.push(
+            "Do not assume the kitten is fully weaned. Confirm appropriate food intake and ongoing weight gain."
+        );
+
+    }
+
+    care.push(
+        "Arrange veterinary assessment for age confirmation, health screening, parasite guidance, and vaccination planning."
+    );
+
+    care.push(
+        "Coldness, weakness, breathing difficulty, injury, or inability to feed requires prompt veterinary assistance."
+    );
+
+    careList.innerHTML = "";
+
+    care.forEach(item => {
+
+        const li = document.createElement("li");
+
+        li.textContent = item;
+
+        careList.appendChild(li);
+
+    });
+
+    result.scrollIntoView({
+        behavior: window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches ? "auto" : "smooth",
+        block: "nearest"
+    });
+
+}
+
+/* RESET */
+
+function resetCalculator() {
+
+    [
+        "eyes",
+        "ears",
+        "movement",
+        "teeth",
+        "feeding"
+    ].forEach(field => {
+
+        document.getElementById(field).value = "unknown";
+
+    });
+
+    document.getElementById("weight").value = "";
+
+    document.getElementById("result").classList.remove("show");
+
+    document.getElementById("ageText").textContent = "";
+
+    document.getElementById("reasonText").textContent = "";
+
+    document.getElementById("careList").innerHTML = "";
+
+}
+
+</script>
+
+</body>
+</html>
