@@ -1,32 +1,92 @@
 # IRON PAW
+### THE NINTH LIFE ARCHIVE
 
-**Cat Rescue Resources · Animal Welfare**
+**A GLOBAL RESOURCE ARCHIVE FOR FELINE CARE, RESCUE, DEVELOPMENT, AND COMPANION WELFARE.**
 
-IRON PAW is a cat rescue resource project created by Axayacatl. It explores how web technology can make animal welfare information more accessible through a dedicated digital destination for cat rescue resources.
+IRON PAW is a cat-care and rescue resource project documenting feline welfare resources, practical care references, developmental information, and interactive companion-care tools.
 
-## About
+The archive combines rescue directories, educational references, and browser-based utilities to make feline care information more accessible.
 
-IRON PAW focuses on the intersection of digital information access and animal welfare. The project aims to provide a clear, accessible starting point for discovering cat rescue information and relevant resources.
+---
 
-Its development brings web design and information organization into a practical animal welfare context, with an emphasis on usability, clarity, and resource accessibility.
+## ARCHIVE INDEX
 
-## Project Details
+### 01. THE MASTERLIST
+A directory of feline rescue networks, animal sanctuaries, adoption resources, and community cat protection organizations.
 
-- **Name:** IRON PAW
-- **Focus:** Cat rescue and animal welfare resources
-- **Medium:** Web technology
-- **Creator:** Axayacatl
+### 02. THE FIELD MANUAL
+Practical reference material covering found-cat situations, responsible intervention, kitten care, and rescue considerations.
 
-## Live Website
+### 03. THE FAMILIAR VAULT
+Companion-care resources covering everyday enrichment, interactive activities, and general feline provisions.
 
-[Visit IRON PAW](https://axaxayacatl.github.io/ironpaw/)
+### 04. KITTEN AGE CALCULATOR
+An interactive educational utility for exploring kitten development through age-based reference information.
 
-## Creator
+### 05. NEONATAL UNIT
+A dedicated resource section for neonatal kitten development, specialized care considerations, and early-life support.
 
-Axayacatl is an online personality and performer working across programming, technology, game design, storytelling, and religious sciences. Her practice combines technical development with interdisciplinary research and the creation of digital tools and web experiences.
+### 06. RESCUE OPERATIONS
+A resource section documenting rescue procedures, response considerations, and practical approaches to feline welfare.
 
-IRON PAW extends this practice into animal welfare, exploring how digital infrastructure can help people discover and navigate useful rescue information.
+### 07. ENRICHMENT GENERATOR / NINE LIVES TIMELINE
+An interactive companion-care tool combining randomized enrichment activity suggestions with a nine-stage feline development timeline.
 
-## Direction
+The generator includes configurable activity parameters for:
+- Life stage
+- Energy level
+- Environment
+- Activity type
 
-IRON PAW is an ongoing exploration of how focused digital resources can support animal welfare. Its direction centers on accessible information, thoughtful organization, and practical web-based resource discovery.
+The timeline documents nine developmental stages, from neonatal kittenhood through super-senior care, with corresponding development profiles and enrichment considerations.
+
+---
+
+## RESOURCE CATEGORIES
+
+| CATEGORY | ARCHIVE FUNCTION |
+|---|---|
+| Rescue Networks | Rescue and sanctuary directories |
+| Feline Development | Age-based educational references |
+| Neonatal Care | Early-life kitten resources |
+| Companion Welfare | Everyday care information |
+| Enrichment | Interactive activity discovery |
+| Rescue Operations | Practical rescue references |
+| Adoption | Shelter and adoption resources |
+| Community Cats | Community cat protection |
+
+---
+
+## PROJECT OBJECTIVES
+
+- Centralize accessible feline rescue and care resources.
+- Document feline development across different life stages.
+- Provide interactive educational utilities for companion care.
+- Encourage responsible enrichment and environmental stimulation.
+- Improve access to rescue, sanctuary, and adoption directories.
+- Support awareness of neonatal, senior, and specialized feline care needs.
+
+---
+
+## ACCESS
+
+**LIVE PROJECT:**  
+https://axaxayacatl.github.io/ironpaw/
+
+**SOURCE REPOSITORY:**  
+https://github.com/axaxayacatl/ironpaw
+
+---
+
+## ARCHIVE NOTICE
+
+IRON PAW is an independent feline resource and educational project. Listed organizations, external resources, and care references are provided for informational purposes. Inclusion does not establish formal affiliation or endorsement.
+
+Interactive utilities provide general educational information and do not replace individualized veterinary advice. Always consult qualified veterinary professionals regarding medical conditions, neonatal care, injuries, and specialized animal-welfare needs.
+
+---
+
+**IRON PAW**  
+*THE NINTH LIFE ARCHIVE*
+
+FORGED FOR THE FORGOTTEN.
