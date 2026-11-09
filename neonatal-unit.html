@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050405">
+<title>NEONATAL UNIT — IRON PAW / THE NINTH LIFE ARCHIVE</title>
+<meta name="description" content="IRON PAW neonatal unit: a feline newborn-care reference archive covering early development, maternal care, orphaned kittens, and veterinary warning signs.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=UnifrakturCook:wght@700&family=Space+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--void:#050405;--iron:#100b10;--steel:#39313b;--silver:#a7a0aa;--white:#e8e0e9;--bone:#d4c8bc;--line:rgba(190,165,190,.22);--red:#711c32;--red-bright:#b72c49;--violet:#76516f;--mono:"Space Mono",monospace;--serif:"Cinzel",serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scrollbar-color:#594052 #080608}
+body{margin:0;color:var(--white);background:radial-gradient(ellipse at 50% 4%,rgba(95,42,77,.20),transparent 42%),radial-gradient(ellipse at 8% 65%,rgba(79,24,48,.12),transparent 35%),repeating-linear-gradient(135deg,transparent 0,transparent 80px,rgba(210,190,210,.018) 81px,transparent 83px),linear-gradient(180deg,#050405,#100b10 48%,#050405);font-family:var(--mono);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:10;pointer-events:none;opacity:.22;background:repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(230,210,230,.025) 4px,transparent 5px)}
+a{color:var(--white);text-decoration:none}a:focus-visible,button:focus-visible{outline:2px solid var(--red-bright);outline-offset:5px}
+header{min-height:78vh;padding:60px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;isolation:isolate;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at center,rgba(83,39,76,.09),transparent 62%),linear-gradient(180deg,transparent,rgba(0,0,0,.38))}
+header:after{content:"";position:absolute;bottom:-1px;left:50%;width:90px;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#8e2948,#c1a0b9,#8e2948,transparent);box-shadow:0 0 22px rgba(153,42,80,.3)}
+.sigil{position:absolute;width:270px;height:270px;border:1px solid rgba(194,160,192,.24);border-radius:50%;box-shadow:inset 0 0 65px rgba(120,65,110,.08),0 0 80px rgba(106,27,55,.13);z-index:-1}
+.sigil:before{content:"";position:absolute;inset:25px;border:1px solid rgba(194,160,192,.22);transform:rotate(45deg)}.sigil:after{content:"";position:absolute;inset:66px;border:1px solid rgba(170,53,84,.4);transform:rotate(-45deg)}
+.mark{color:#c49bb8;font-size:12px;letter-spacing:12px;padding-left:12px;text-shadow:0 0 15px rgba(161,70,121,.28)}
+.logo{margin-top:26px;font-family:"UnifrakturCook",serif;font-size:clamp(48px,9vw,76px);letter-spacing:4px;color:#e7dce8;text-shadow:2px 2px 0 #342632,-1px 0 0 #8d7b90,0 0 30px rgba(167,109,161,.13)}
+.subtitle{margin-top:18px;color:#b1a0b2;font-size:10px;line-height:2.4;letter-spacing:3px}
+.motto{margin-top:34px;padding:12px 18px;border-top:1px solid #87304d;border-bottom:1px solid rgba(190,165,190,.25);font-family:var(--serif);font-size:11px;letter-spacing:4px;color:#dfc9d9}
+.translation{margin-top:36px;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.translation-word{font-family:"Noto Sans JP",var(--serif);font-size:clamp(25px,5vw,42px);letter-spacing:4px;color:#f0dce9;text-shadow:0 0 22px rgba(183,44,73,.3);transition:opacity .35s ease,transform .35s ease}
+.translation-word.out{opacity:0;transform:translateY(7px)}
+.translation-language{font-size:9px;letter-spacing:3px;color:#b77b9a}
+.translation-count{font-size:8px;color:#796879;letter-spacing:2px}
+.container{max-width:700px;margin:auto;padding:35px 20px 65px}
+.divider{text-align:center;color:#b18aaa;letter-spacing:12px;margin:44px 0;font-size:12px;text-shadow:0 0 12px rgba(145,63,120,.25)}
+.section{position:relative;color:#e1d4e2;font-family:var(--serif);font-size:15px;font-weight:700;letter-spacing:4px;padding:0 0 15px 13px;margin:0 0 25px;border-bottom:1px solid var(--line);border-left:2px solid #8e3457}
+.section:after{content:"";position:absolute;bottom:-1px;left:0;width:34%;height:1px;background:linear-gradient(90deg,#8e3457,transparent)}
+.section-note{margin:-12px 0 24px;color:#928493;font-size:10px;line-height:1.9;letter-spacing:1px}
+.record{position:relative;overflow:hidden;background:radial-gradient(ellipse at 100% 0%,rgba(109,57,100,.10),transparent 45%),linear-gradient(145deg,#19121a,#090709 76%);border:1px solid #413342;padding:25px;margin-bottom:24px;box-shadow:inset 0 0 50px rgba(0,0,0,.8),inset 0 1px rgba(220,190,220,.04),0 12px 30px rgba(0,0,0,.65);transition:border-color .2s ease}
+.record:before{content:"";position:absolute;top:0;left:0;width:55px;height:2px;background:linear-gradient(90deg,#a02c4d,#bda0bd,transparent)}
+.record:after{content:"IX";position:absolute;right:-7px;bottom:-35px;color:rgba(177,132,176,.055);font-family:"UnifrakturCook",serif;font-size:110px;pointer-events:none;transform:rotate(-12deg)}
+.record:hover{border-color:#79516e}
+.code{position:relative;z-index:1;color:#bd7e9c;font-size:10px;letter-spacing:3px;overflow-wrap:anywhere}
+.name{position:relative;z-index:1;margin:17px 0;color:#e8dce8;font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.6;letter-spacing:1.5px}
+.meta{position:relative;z-index:1;color:#b5a8b4;font-size:11px;line-height:2.2;letter-spacing:.5px}
+.status{position:relative;z-index:1;display:inline-block;margin-top:17px;padding:5px 8px;border:1px solid #51404f;border-left:2px solid #96749a;color:#c7b5cb;font-size:9px;letter-spacing:2px}
+.micro{position:relative;z-index:1;margin-top:17px;color:#928493;font-size:10px;line-height:2;letter-spacing:1.2px}
+.manual-step{position:relative;z-index:1;padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid rgba(190,165,190,.12)}
+.manual-step:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
+.step-title{margin-bottom:9px;color:#e4d6e4;font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.8;letter-spacing:1px}
+.step-number{margin-right:8px;color:#c16c91;font-family:var(--mono);font-size:10px}
+.manual-step p{margin:0;color:#b6a9b7;font-size:11px;line-height:2}
+.warning{border-color:#49323e}.warning:before{background:linear-gradient(90deg,#a37b8d,#c5a6bb,transparent)}.warning .code{color:#d4a2bc}
+.notice{padding:14px 16px;border:1px solid #694050;border-left:2px solid #b72c49;background:rgba(95,25,49,.12);color:#d9c2cf;font-size:10px;line-height:2;letter-spacing:.5px}
+.timeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.phase{padding:15px;border:1px solid #413342;background:linear-gradient(145deg,rgba(35,23,35,.85),rgba(8,6,8,.9))}
+.phase b{display:block;color:#d7a0b7;font-size:10px;letter-spacing:2px;margin-bottom:8px}.phase span{display:block;color:#b6a9b7;font-size:10px;line-height:1.9}
+.access{position:relative;z-index:2;display:inline-block;margin-top:20px;padding:9px 12px;border:1px solid #594052;border-left:2px solid #a53b5b;background:linear-gradient(135deg,rgba(118,43,77,.16),rgba(0,0,0,.2));color:#e9dce9;font-size:10px;letter-spacing:3px}
+footer{position:relative;border-top:1px solid var(--line);text-align:center;padding:45px 20px;color:#99889b;font-size:10px;line-height:2.5;letter-spacing:4px}
+footer:before{content:"";position:absolute;top:-1px;left:50%;width:80px;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#8e3457,transparent)}
+.footer-mark{color:#bb7ea6;font-family:"UnifrakturCook",serif;font-size:28px;text-shadow:0 0 15px rgba(154,64,122,.3)}
+.back{display:inline-block;margin-top:24px;padding:9px 12px;border:1px solid #594052;color:#cdb9ca;font-size:9px;letter-spacing:2px}
+@media(max-width:600px){header{min-height:76vh;padding:45px 16px}.sigil{width:220px;height:220px}.logo{font-size:clamp(43px,12vw,62px)}.subtitle{font-size:9px;letter-spacing:2px}.motto{font-size:9px;letter-spacing:2px}.container{padding:25px 15px 45px}.section{font-size:13px;letter-spacing:2px}.record{padding:21px 18px}.name{font-size:15px}.meta,.manual-step p{font-size:10px}.timeline{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.translation-word{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="sigil" aria-hidden="true"></div>
+  <div class="mark">IX</div>
+  <div class="logo">IRON PAW</div>
+  <div class="subtitle">THE NINTH LIFE ARCHIVE<br>NEONATAL UNIT / FELINE EARLY-LIFE CARE</div>
+  <div class="motto">FROM FIRST BREATH TO FIRST HOME</div>
+  <div class="translation" aria-live="polite" aria-atomic="true">
+    <div class="translation-word" id="translationWord" lang="ja">生命維持管理</div>
+    <div class="translation-language" id="translationLanguage">日本語 / JAPANESE</div>
+    <div class="translation-count" id="translationCount">LANGUAGE FRAME 01 / 08</div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="divider" aria-hidden="true">✦ IX ✦</div>
+  <section aria-labelledby="unit-heading">
+    <h2 class="section" id="unit-heading">NEONATAL UNIT</h2>
+    <p class="section-note">FELINE NEONATAL CARE / EARLY DEVELOPMENT / MATERNAL &amp; ORPHAN SUPPORT</p>
+    <article class="record">
+      <div class="code">IRON PAW CLINICAL REFERENCE IX-N001</div>
+      <h3 class="name">生命維持管理 / LIFE-SUPPORT CARE</h3>
+      <div class="meta">SUBJECT: NEWBORN DOMESTIC CATS<br>REFERENCE WINDOW: BIRTH TO EIGHT WEEKS<br>CLASSIFICATION: EDUCATIONAL CARE RESOURCE</div>
+      <div class="status">STATUS: ACTIVE REFERENCE</div>
+      <div class="micro">A FIELD-ORIENTED INTRODUCTION TO THE CONDITIONS, OBSERVATIONS, AND SUPPORT SYSTEMS THAT HELP VULNERABLE KITTENS SURVIVE AND DEVELOP.</div>
+    </article>
+  </section>
+
+  <div class="divider" aria-hidden="true">✦ ☽ ✦</div>
+  <section aria-labelledby="first-hours">
+    <h2 class="section" id="first-hours">01 / THE FIRST HOURS</h2>
+    <p class="section-note">INITIAL OBSERVATION / MATERNAL CONTACT / VETERINARY ASSESSMENT</p>
+    <article class="record">
+      <div class="code">NEONATAL PROTOCOL IX-N001-A</div>
+      <h3 class="name">ASSESS BEFORE INTERVENTION</h3>
+      <div class="manual-step"><div class="step-title"><span class="step-number">01 /</span>OBSERVE THE LITTER</div><p>When the mother is present and the kittens appear settled, observe quietly from a distance. Check whether each kitten is breathing, warm, responsive, and able to nurse. Avoid unnecessary handling or separating the litter.</p></div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">02 /</span>CHECK MATERNAL CARE</div><p>Look for nursing, grooming, and attentive maternal behavior. A mother may leave briefly to eat, drink, or use the litter box. If kittens are persistently crying, cold, isolated, or not nursing, contact a veterinarian or experienced neonatal rescue.</p></div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">03 /</span>ARRANGE PROFESSIONAL SUPPORT</div><p>Newborns are fragile. Contact a veterinarian promptly for an initial assessment and guidance on warmth, feeding, weight monitoring, and the condition of the mother and litter.</p></div>
+    </article>
+  </section>
+
+  <section aria-labelledby="warmth">
+    <h2 class="section" id="warmth">02 / THERMAL SUPPORT</h2>
+    <p class="section-note">WARMTH CONTROL / SAFE NESTING / HYPOTHERMIA AWARENESS</p>
+    <article class="record warning">
+      <div class="code">FIELD NOTICE IX-N002</div>
+      <h3 class="name">TEMPERATURE REGULATION</h3>
+      <div class="micro">Newborn kittens have limited ability to regulate body temperature and depend on their mother and a suitable environment.</div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">01 /</span>MAINTAIN A SAFE NEST</div><p>Provide a dry, draft-free nesting area. If supplemental heat is advised, use a controlled, kitten-safe source beneath only part of the enclosure so kittens can move away from it. Prevent direct contact with heating elements and check frequently for overheating.</p></div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">02 /</span>RECOGNIZE DANGER</div><p>Coldness, weakness, poor responsiveness, or difficulty breathing are urgent warning signs. Seek veterinary help immediately. Do not attempt to feed a cold, weak, or unresponsive kitten before receiving veterinary guidance.</p></div>
+      <div class="notice">URGENT: HYPOTHERMIA, BREATHING DIFFICULTY, COLLAPSE, OR UNRESPONSIVENESS REQUIRE IMMEDIATE VETERINARY ATTENTION.</div>
+    </article>
+  </section>
+
+  <section aria-labelledby="nutrition">
+    <h2 class="section" id="nutrition">03 / NUTRITION &amp; FEEDING</h2>
+    <p class="section-note">NURSING / COLOSTRUM / ORPHANED KITTEN SUPPORT</p>
+    <article class="record">
+      <div class="code">CARE PROTOCOL IX-N003</div>
+      <h3 class="name">THE FIRST SOURCE OF NUTRITION</h3>
+      <div class="manual-step"><div class="step-title"><span class="step-number">01 /</span>MATERNAL NURSING</div><p>When available and safe, nursing from the mother is the normal source of nutrition. Colostrum, the early milk produced after birth, provides important maternal antibodies. Ask a veterinarian for advice if a kitten cannot nurse or the mother is unwell.</p></div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">02 /</span>ORPHANED KITTENS</div><p>Use a commercial kitten milk replacer when supplemental feeding is needed; do not substitute cow's milk or improvise a formula. Feeding volume, frequency, and technique depend on age, weight, and health and should follow veterinary or qualified neonatal-rescue guidance.</p></div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">03 /</span>SAFE FEEDING POSITION</div><p>Never feed a kitten on its back like a human infant. Incorrect positioning or technique can cause aspiration. If a kitten coughs, struggles to breathe, or milk comes from the nose, stop and seek urgent veterinary advice.</p></div>
+    </article>
+  </section>
+
+  <div class="divider" aria-hidden="true">✦ IX ✦</div>
+  <section aria-labelledby="development">
+    <h2 class="section" id="development">04 / DEVELOPMENT INDEX</h2>
+    <p class="section-note">BIRTH-TO-EIGHT-WEEK REFERENCE / GENERAL MILESTONES</p>
+    <div class="timeline">
+      <div class="phase"><b>00–07 DAYS / NEONATAL</b><span>Eyes closed; ears folded; warmth, nursing, and maternal care are essential.</span></div>
+      <div class="phase"><b>08–14 DAYS / TRANSITION</b><span>Eyes begin opening; responses to sound and movement gradually develop.</span></div>
+      <div class="phase"><b>15–28 DAYS / MOBILITY</b><span>Walking and exploration increase; early play and social interaction emerge.</span></div>
+      <div class="phase"><b>29–56 DAYS / SOCIAL</b><span>Coordination and play advance; gradual weaning and litter habits develop.</span></div>
+    </div>
+    <article class="record" style="margin-top:18px">
+      <div class="code">DEVELOPMENT RECORD IX-N004</div>
+      <h3 class="name">GROWTH IS INDIVIDUAL</h3>
+      <div class="micro">Milestones are approximate, not diagnostic deadlines. Prematurity, illness, nutrition, and individual variation can change development. A veterinarian should assess concerns about growth, eyes, movement, hearing, or feeding.</div>
+    </article>
+  </section>
+
+  <section aria-labelledby="weight">
+    <h2 class="section" id="weight">05 / WEIGHT &amp; OBSERVATION LOG</h2>
+    <p class="section-note">CONSISTENT RECORDS / DAILY REVIEW / EARLY WARNING SIGNS</p>
+    <article class="record">
+      <div class="code">MONITORING TEMPLATE IX-N005</div>
+      <h3 class="name">DAILY WEIGHT RECORD</h3>
+      <div class="manual-step"><div class="step-title"><span class="step-number">A /</span>WEIGH CONSISTENTLY</div><p>Use a suitable digital gram scale and record each kitten separately, at a consistent time and under similar conditions. Record the date, weight, nursing or feeding observations, and any concerns.</p></div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">B /</span>REVIEW THE TREND</div><p>Healthy kittens generally gain weight steadily, but expected gains vary. A flat or falling weight, missed feeds, persistent crying, diarrhea, or reduced activity warrants prompt veterinary advice.</p></div>
+      <div class="notice">PRINTABLE LOG FIELDS: DATE / KITTEN ID / WEIGHT (G) / FEEDING / ELIMINATION / ACTIVITY / OBSERVATIONS / FOLLOW-UP.</div>
+    </article>
+  </section>
+
+  <section aria-labelledby="orphan">
+    <h2 class="section" id="orphan">06 / ORPHAN CARE</h2>
+    <p class="section-note">MATERNAL ABSENCE / FOSTER SUPPORT / PROFESSIONAL GUIDANCE</p>
+    <article class="record">
+      <div class="code">FIELD PROTOCOL IX-N006</div>
+      <h3 class="name">WHEN THE MOTHER IS ABSENT</h3>
+      <div class="manual-step"><div class="step-title"><span class="step-number">01 /</span>CONFIRM THE SITUATION</div><p>If kittens are found outdoors, observe from a safe distance when possible. The mother may be temporarily away. Contact a local rescue or veterinarian before moving kittens unless they are in immediate danger.</p></div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">02 /</span>BUILD A CARE PLAN</div><p>Orphaned neonates may require round-the-clock warmth, age-appropriate feeding, help with elimination, hygiene, and frequent monitoring. Arrange experienced foster or veterinary support rather than relying on guesswork.</p></div>
+      <div class="manual-step"><div class="step-title"><span class="step-number">03 /</span>SUPPORT ELIMINATION</div><p>Very young kittens may need gentle stimulation to urinate and defecate after feeding. Ask a veterinarian or neonatal-care professional to demonstrate the appropriate method and frequency.</p></div>
+    </article>
+  </section>
+
+  <section aria-labelledby="warning-signs">
+    <h2 class="section" id="warning-signs">07 / CLINICAL WATCH</h2>
+    <p class="section-note">WARNING SIGNS / RAPID RESPONSE / VETERINARY ESCALATION</p>
+    <article class="record warning">
+      <div class="code">EMERGENCY NOTICE IX-N007</div>
+      <h3 class="name">DO NOT WAIT FOR THE NEXT CHECK</h3>
+      <div class="meta">URGENT VETERINARY ASSESSMENT</div>
+      <div class="micro">DIFFICULT OR LABORED BREATHING<br>UNRESPONSIVENESS OR COLLAPSE<br>SEVERE WEAKNESS OR COLDNESS<br>INABILITY TO NURSE OR SWALLOW<br>PALE OR BLUE-LOOKING GUMS / TONGUE<br>REPEATED VOMITING OR SEVERE DIARRHEA<br>INJURY, BLEEDING, OR SEIZURES</div>
+      <div class="notice">Contact an emergency veterinarian immediately for these signs. Do not delay care while attempting home treatment.</div>
+    </article>
+  </section>
+
+  <div class="divider" aria-hidden="true">✦ ☽ ✦</div>
+  <section aria-labelledby="resources">
+    <h2 class="section" id="resources">08 / REFERENCE NETWORK</h2>
+    <p class="section-note">EXTERNAL KNOWLEDGE / VETERINARY GUIDANCE / RESCUE SUPPORT</p>
+    <article class="record">
+      <div class="code">EXTERNAL RESOURCE IX-R001</div>
+      <h3 class="name">BEST FRIENDS ANIMAL SOCIETY</h3>
+      <div class="meta">ANIMAL WELFARE / KITTEN CARE / SHELTER RESOURCES</div>
+      <a class="access" href="https://bestfriends.org" target="_blank" rel="noopener noreferrer">ACCESS ↗</a>
+    </article>
+    <article class="record">
+      <div class="code">EXTERNAL RESOURCE IX-R002</div>
+      <h3 class="name">CATS PROTECTION</h3>
+      <div class="meta">UNITED KINGDOM / CAT CARE GUIDANCE</div>
+      <a class="access" href="https://www.cats.org.uk" target="_blank" rel="noopener noreferrer">ACCESS ↗</a>
+    </article>
+    <article class="record">
+      <div class="code">EXTERNAL RESOURCE IX-R003</div>
+      <h3 class="name">ALLEY CAT ALLIES</h3>
+      <div class="meta">COMMUNITY CAT SUPPORT / KITTEN RESOURCES</div>
+      <a class="access" href="https://www.alleycat.org" target="_blank" rel="noopener noreferrer">ACCESS ↗</a>
+    </article>
+  </section>
+
+  <div class="divider" aria-hidden="true">✦ IX ✦</div>
+  <section aria-labelledby="notice">
+    <h2 class="section" id="notice">ARCHIVE NOTICE</h2>
+    <article class="record">
+      <div class="code">SYSTEM NOTE IX-N008</div>
+      <h3 class="name">EDUCATIONAL REFERENCE ONLY</h3>
+      <div class="meta">NOT A DIAGNOSTIC TOOL<br>NOT A SUBSTITUTE FOR VETERINARY CARE<br>INDIVIDUAL NEEDS VARY</div>
+      <div class="micro">NEONATAL KITTENS CAN DETERIORATE QUICKLY. THIS ARCHIVE PROVIDES GENERAL EDUCATIONAL INFORMATION AND DOES NOT REPLACE EXAMINATION, DIAGNOSIS, OR TREATMENT BY A LICENSED VETERINARIAN. CONTACT A VETERINARY PROFESSIONAL FOR AGE- AND CONDITION-SPECIFIC INSTRUCTIONS.</div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-mark">IX</div>
+  IRON PAW<br>
+  THE NINTH LIFE ARCHIVE<br>
+  NEONATAL UNIT / DIVISION 001<br>
+  <a class="back" href="https://axaxayacatl.github.io/ironpaw/">RETURN TO THE MAIN ARCHIVE ↗</a>
+  <div style="margin-top:25px;color:#745d70">FORGED FOR THE FORGOTTEN</div>
+</footer>
+
+<script>
+(() => {
+  const frames = [
+    {word:"生命維持管理",lang:"日本語 / JAPANESE",code:"ja"},
+    {word:"LIFE-SUPPORT CARE",lang:"ENGLISH",code:"en"},
+    {word:"CUIDADOS DE SUPORTE À VIDA",lang:"PORTUGUÊS / PORTUGUESE",code:"pt"},
+    {word:"CUIDADOS DE SOPORTE VITAL",lang:"ESPAÑOL / SPANISH",code:"es"},
+    {word:"SOINS DE MAINTIEN EN VIE",lang:"FRANÇAIS / FRENCH",code:"fr"},
+    {word:"LEBENSERHALTENDE PFLEGE",lang:"DEUTSCH / GERMAN",code:"de"},
+    {word:"생명 유지 관리",lang:"한국어 / KOREAN",code:"ko"},
+    {word:"生命支持护理",lang:"简体中文 / CHINESE",code:"zh"}
+  ];
+  const word = document.getElementById("translationWord");
+  const language = document.getElementById("translationLanguage");
+  const count = document.getElementById("translationCount");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let index = 0;
+  function showFrame(next) {
+    word.classList.add("out");
+    window.setTimeout(() => {
+      index = next;
+      word.textContent = frames[index].word;
+      word.lang = frames[index].code;
+      language.textContent = frames[index].lang;
+      count.textContent = `LANGUAGE FRAME ${String(index + 1).padStart(2,"0")} / ${String(frames.length).padStart(2,"0")}`;
+      word.classList.remove("out");
+    }, 350);
+  }
+  if (!reduceMotion) {
+    window.setInterval(() => showFrame((index + 1) % frames.length), 2800);
+  }
+})();
+</script>
+</body>
+</html>
