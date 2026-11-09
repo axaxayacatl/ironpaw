@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050405">
 <title>IRON PAW — The Ninth Life Archive</title>
-<meta name="description" content="IRON PAW — a feline rescue archive, care reference, and collection of cat welfare tools.">
+<meta name="description" content="IRON PAW — a feline rescue archive, shelter directory, care reference, and collection of cat welfare tools.">
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=UnifrakturCook:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
@@ -24,7 +24,9 @@
     --serif: "Cinzel", serif;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 html {
     scroll-behavior: smooth;
@@ -337,11 +339,17 @@ header {
     line-height: 2;
 }
 
-.warning { border-color: #49323e; }
+.warning {
+    border-color: #49323e;
+}
+
 .warning::before {
     background: linear-gradient(90deg, #a37b8d, #c5a6bb, transparent);
 }
-.warning .code { color: #d4a2bc; }
+
+.warning .code {
+    color: #d4a2bc;
+}
 
 footer {
     position: relative;
@@ -398,16 +406,25 @@ footer {
         padding: 21px 18px;
     }
 
-    .name { font-size: 15px; }
+    .name {
+        font-size: 15px;
+    }
 
-    .meta, .manual-step p {
+    .meta,
+    .manual-step p {
         font-size: 10px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .record, .access { transition: none; }
+    html {
+        scroll-behavior: auto;
+    }
+
+    .record,
+    .access {
+        transition: none;
+    }
 }
 </style>
 </head>
@@ -428,13 +445,81 @@ footer {
 
 <main class="container">
 
+    <!-- 01: SHELTERS AND RESCUE ORGANIZATIONS -->
+
+    <section aria-labelledby="masterlist">
+        <h2 class="section" id="masterlist">THE MASTERLIST</h2>
+        <p class="section-note">
+            01 / SHELTERS / SANCTUARIES / RESCUE ORGANIZATIONS / ADOPTION SERVICES
+        </p>
+
+        <article class="record">
+            <div class="code">IRON PAW RECORD IX-0001</div>
+            <h3 class="name">THE CAT HOUSE ON THE KINGS</h3>
+            <div class="meta">
+                PARLIER / CALIFORNIA<br>
+                UNITED STATES<br>
+                CAT SANCTUARY / ADOPTION
+            </div>
+            <div class="status">DIRECTORY RECORD</div>
+            <div class="micro">
+                CAT SANCTUARY / ADOPTION RESOURCES
+            </div>
+            <a class="access" href="https://www.cathouseonthekings.com" target="_blank" rel="noopener noreferrer">ACCESS SHELTER ↗</a>
+        </article>
+
+        <article class="record">
+            <div class="code">IRON PAW RECORD IX-0002</div>
+            <h3 class="name">BEST FRIENDS ANIMAL SOCIETY</h3>
+            <div class="meta">
+                UNITED STATES<br>
+                ANIMAL RESCUE / SANCTUARY / ADOPTION
+            </div>
+            <div class="status">DIRECTORY RECORD</div>
+            <div class="micro">
+                ANIMAL WELFARE / SHELTER SUPPORT
+            </div>
+            <a class="access" href="https://bestfriends.org" target="_blank" rel="noopener noreferrer">ACCESS SHELTER ↗</a>
+        </article>
+
+        <article class="record">
+            <div class="code">IRON PAW RECORD IX-0003</div>
+            <h3 class="name">CATS PROTECTION</h3>
+            <div class="meta">
+                UNITED KINGDOM<br>
+                CAT RESCUE / WELFARE / ADOPTION
+            </div>
+            <div class="status">DIRECTORY RECORD</div>
+            <div class="micro">
+                CAT CARE GUIDANCE / RESCUE SERVICES
+            </div>
+            <a class="access" href="https://www.cats.org.uk" target="_blank" rel="noopener noreferrer">ACCESS SHELTER ↗</a>
+        </article>
+
+        <article class="record">
+            <div class="code">IRON PAW RECORD IX-0004</div>
+            <h3 class="name">ALLEY CAT ALLIES</h3>
+            <div class="meta">
+                UNITED STATES / INTERNATIONAL RESOURCES<br>
+                COMMUNITY CAT PROTECTION
+            </div>
+            <div class="status">DIRECTORY RECORD</div>
+            <div class="micro">
+                COMMUNITY CAT ADVOCACY / TRAP-NEUTER-RETURN
+            </div>
+            <a class="access" href="https://www.alleycat.org" target="_blank" rel="noopener noreferrer">ACCESS ORGANIZATION ↗</a>
+        </article>
+
+    </section>
+
     <div class="divider">✦ IX ✦</div>
 
-    <!-- EXISTING REPOSITORY TOOLS -->
+    <!-- 02: EXISTING REPOSITORY TOOLS -->
+
     <section aria-labelledby="tool-archive">
         <h2 class="section" id="tool-archive">THE TOOL ARCHIVE</h2>
         <p class="section-note">
-            EXISTING IRON PAW UTILITIES / FELINE CARE SYSTEMS / DATA REFERENCES
+            02 / EXISTING IRON PAW UTILITIES / FELINE CARE SYSTEMS / DATA REFERENCES
         </p>
 
         <article class="record">
@@ -479,70 +564,12 @@ footer {
 
     <div class="divider">✦ ☽ ✦</div>
 
-    <!-- RESCUE DIRECTORY -->
-    <section aria-labelledby="masterlist">
-        <h2 class="section" id="masterlist">THE MASTERLIST</h2>
-        <p class="section-note">
-            RESCUE NETWORKS / SANCTUARIES / COMMUNITY CAT PROTECTION
-        </p>
+    <!-- 03: FIELD MANUAL -->
 
-        <article class="record">
-            <div class="code">IRON PAW RECORD IX-0001</div>
-            <h3 class="name">THE CAT HOUSE ON THE KINGS</h3>
-            <div class="meta">
-                PARLIER / CALIFORNIA<br>
-                UNITED STATES<br>
-                SANCTUARY / ADOPTION
-            </div>
-            <div class="status">STATUS: LIVING RECORD</div>
-            <div class="micro">CAT SANCTUARY / ADOPTION RESOURCES</div>
-            <a class="access" href="https://www.cathouseonthekings.com" target="_blank" rel="noopener noreferrer">ACCESS ↗</a>
-        </article>
-
-        <article class="record">
-            <div class="code">IRON PAW RECORD IX-0002</div>
-            <h3 class="name">BEST FRIENDS ANIMAL SOCIETY</h3>
-            <div class="meta">
-                UNITED STATES<br>
-                RESCUE / SANCTUARY / ADOPTION
-            </div>
-            <div class="status">STATUS: LIVING RECORD</div>
-            <div class="micro">ANIMAL WELFARE / SHELTER SUPPORT</div>
-            <a class="access" href="https://bestfriends.org" target="_blank" rel="noopener noreferrer">ACCESS ↗</a>
-        </article>
-
-        <article class="record">
-            <div class="code">IRON PAW RECORD IX-0003</div>
-            <h3 class="name">CATS PROTECTION</h3>
-            <div class="meta">
-                UNITED KINGDOM<br>
-                RESCUE / WELFARE / ADOPTION
-            </div>
-            <div class="status">STATUS: LIVING RECORD</div>
-            <div class="micro">CAT CARE GUIDANCE / RESCUE SERVICES</div>
-            <a class="access" href="https://www.cats.org.uk" target="_blank" rel="noopener noreferrer">ACCESS ↗</a>
-        </article>
-
-        <article class="record">
-            <div class="code">IRON PAW RECORD IX-0004</div>
-            <h3 class="name">ALLEY CAT ALLIES</h3>
-            <div class="meta">
-                UNITED STATES / INTERNATIONAL RESOURCES<br>
-                COMMUNITY CAT PROTECTION
-            </div>
-            <div class="status">STATUS: LIVING RECORD</div>
-            <div class="micro">COMMUNITY CAT ADVOCACY / TRAP-NEUTER-RETURN</div>
-            <a class="access" href="https://www.alleycat.org" target="_blank" rel="noopener noreferrer">ACCESS ↗</a>
-        </article>
-    </section>
-
-    <div class="divider">✦ ☽ ✦</div>
-
-    <!-- FIELD MANUAL -->
     <section aria-labelledby="field-manual">
         <h2 class="section" id="field-manual">THE FIELD MANUAL</h2>
         <p class="section-note">
-            PRACTICAL REFERENCE / FIRST RESPONSE / RESPONSIBLE CARE
+            03 / PRACTICAL REFERENCE / FIRST RESPONSE / RESPONSIBLE CARE
         </p>
 
         <article class="record">
@@ -550,36 +577,70 @@ footer {
             <h3 class="name">WHEN YOU FIND A CAT</h3>
 
             <div class="manual-step">
-                <div class="step-title"><span class="step-number">01 /</span> ASSESS THE SITUATION</div>
-                <p>Observe the cat from a safe distance. Look for visible injuries, difficulty breathing, distress, or signs that kittens may be nearby. Avoid chasing or cornering the cat.</p>
+                <div class="step-title">
+                    <span class="step-number">01 /</span>
+                    ASSESS THE SITUATION
+                </div>
+                <p>
+                    Observe the cat from a safe distance. Look for visible injuries,
+                    difficulty breathing, distress, or signs that kittens may be nearby.
+                    Avoid chasing or cornering the cat.
+                </p>
             </div>
 
             <div class="manual-step">
-                <div class="step-title"><span class="step-number">02 /</span> CONTACT LOCAL SUPPORT</div>
-                <p>Contact a local animal shelter, rescue organization, veterinarian, or animal control service for guidance. Ask about safe handling, lost-pet procedures, and available assistance before attempting capture.</p>
+                <div class="step-title">
+                    <span class="step-number">02 /</span>
+                    CONTACT LOCAL SUPPORT
+                </div>
+                <p>
+                    Contact a local animal shelter, rescue organization, veterinarian,
+                    or animal control service for guidance. Ask about safe handling,
+                    lost-pet procedures, and available assistance before attempting capture.
+                </p>
             </div>
 
             <div class="manual-step">
-                <div class="step-title"><span class="step-number">03 /</span> CHECK FOR IDENTIFICATION</div>
-                <p>If the cat can be safely contained, ask a veterinarian or shelter to scan for a microchip. Check local lost-pet listings and follow applicable found-animal procedures.</p>
+                <div class="step-title">
+                    <span class="step-number">03 /</span>
+                    CHECK FOR IDENTIFICATION
+                </div>
+                <p>
+                    If the cat can be safely contained, ask a veterinarian or shelter
+                    to scan for a microchip. Check local lost-pet listings and follow
+                    applicable found-animal procedures.
+                </p>
             </div>
 
             <div class="manual-step">
-                <div class="step-title"><span class="step-number">04 /</span> ARRANGE SAFE CARE</div>
-                <p>Follow a rescue professional's advice about temporary containment, food, water, and separation from household animals. Keep an unfamiliar cat in a quiet, secure area only if it is safe to do so.</p>
+                <div class="step-title">
+                    <span class="step-number">04 /</span>
+                    ARRANGE SAFE CARE
+                </div>
+                <p>
+                    Follow a rescue professional's advice about temporary containment,
+                    food, water, and separation from household animals. Keep an unfamiliar
+                    cat in a quiet, secure area only if it is safe to do so.
+                </p>
             </div>
 
             <div class="micro">
-                DO NOT HANDLE AN INJURED OR FRIGHTENED CAT WITHOUT APPROPRIATE GUIDANCE. SEEK URGENT VETERINARY HELP FOR SERIOUS INJURIES OR BREATHING DIFFICULTIES.
+                DO NOT HANDLE AN INJURED OR FRIGHTENED CAT WITHOUT APPROPRIATE GUIDANCE.
+                SEEK URGENT VETERINARY HELP FOR SERIOUS INJURIES OR BREATHING DIFFICULTIES.
             </div>
         </article>
 
         <article class="record warning">
             <div class="code">FIELD NOTICE IX-F002</div>
             <h3 class="name">KITTENS WITHOUT A VISIBLE MOTHER</h3>
-            <div class="meta">OBSERVE FIRST / INTERVENE WHEN NECESSARY</div>
+            <div class="meta">
+                OBSERVE FIRST / INTERVENE WHEN NECESSARY
+            </div>
             <div class="micro">
-                Young kittens may be left alone temporarily while their mother searches for food. Observe from a safe distance and contact a local kitten rescue or veterinarian for age-specific advice. Do not separate kittens from their mother unless intervention is necessary or a qualified responder advises it.
+                Young kittens may be left alone temporarily while their mother searches
+                for food. Observe from a safe distance and contact a local kitten rescue
+                or veterinarian for age-specific advice. Do not separate kittens from
+                their mother unless intervention is necessary or a qualified responder advises it.
             </div>
             <a class="access" href="https://www.alleycat.org" target="_blank" rel="noopener noreferrer">KITTEN RESOURCES ↗</a>
         </article>
@@ -587,11 +648,12 @@ footer {
 
     <div class="divider">✦ ☽ ✦</div>
 
-    <!-- FAMILIAR VAULT -->
+    <!-- 04: FAMILIAR VAULT -->
+
     <section aria-labelledby="familiar-vault">
         <h2 class="section" id="familiar-vault">THE FAMILIAR VAULT</h2>
         <p class="section-note">
-            COMPANION CARE / ENRICHMENT / EVERYDAY PROVISIONS
+            04 / COMPANION CARE / ENRICHMENT / EVERYDAY PROVISIONS
         </p>
 
         <article class="record">
@@ -603,8 +665,12 @@ footer {
                 EGG
             </div>
             <div class="micro">
-                SIMPLE HOMEMADE TREAT REFERENCE<br><br>
-                Combine plain pumpkin puree, oat flour, and egg, then bake until fully cooked. Do not use sweetened pumpkin pie filling. Allow to cool completely and offer only a small amount occasionally if the ingredients are suitable for your cat. Treats should supplement, not replace, a complete feline diet.
+                SIMPLE HOMEMADE TREAT REFERENCE
+                <br><br>
+                Combine plain pumpkin puree, oat flour, and egg, then bake until fully
+                cooked. Do not use sweetened pumpkin pie filling. Allow to cool completely
+                and offer only a small amount occasionally if the ingredients are suitable
+                for your cat. Treats should supplement, not replace, a complete feline diet.
             </div>
         </article>
 
@@ -613,13 +679,27 @@ footer {
             <h3 class="name">TWO-STEP CAT ACTIVITY</h3>
 
             <div class="manual-step">
-                <div class="step-title"><span class="step-number">01 /</span> THE HUNT</div>
-                <p>Hide a familiar toy or place a few pieces of your cat's usual food nearby. Let your cat investigate at their own pace, without forcing participation.</p>
+                <div class="step-title">
+                    <span class="step-number">01 /</span>
+                    THE HUNT
+                </div>
+                <p>
+                    Hide a familiar toy or place a few pieces of your cat's usual food
+                    nearby. Let your cat investigate at their own pace, without forcing
+                    participation.
+                </p>
             </div>
 
             <div class="manual-step">
-                <div class="step-title"><span class="step-number">02 /</span> THE RETURN</div>
-                <p>Sit quietly with your cat for a few minutes. Offer gentle contact if they welcome it, or simply share the space and let them choose how to interact.</p>
+                <div class="step-title">
+                    <span class="step-number">02 /</span>
+                    THE RETURN
+                </div>
+                <p>
+                    Sit quietly with your cat for a few minutes. Offer gentle contact
+                    if they welcome it, or simply share the space and let them choose
+                    how to interact.
+                </p>
             </div>
 
             <div class="micro">
@@ -630,11 +710,15 @@ footer {
         </article>
     </section>
 
-    <div class="divider">✦ IX ✦</div>
+    <div class="divider">✦ ☽ ✦</div>
 
-    <!-- ARCHIVE NOTICE -->
+    <!-- 05: ARCHIVE NOTICE -->
+
     <section aria-labelledby="archive-notice">
         <h2 class="section" id="archive-notice">ARCHIVE NOTICE</h2>
+        <p class="section-note">
+            05 / DIRECTORY INFORMATION / SOURCE VERIFICATION
+        </p>
 
         <article class="record">
             <div class="code">SYSTEM NOTE IX-N001</div>
@@ -645,7 +729,10 @@ footer {
                 VERIFY DETAILS WITH EACH ORGANIZATION
             </div>
             <div class="micro">
-                IRON PAW IS AN INDEPENDENT RESOURCE DIRECTORY. LISTING AN ORGANIZATION DOES NOT IMPLY FORMAL AFFILIATION OR ENDORSEMENT. CONTACT EACH PROVIDER DIRECTLY TO CONFIRM ITS CURRENT SERVICES, ELIGIBILITY REQUIREMENTS, AND AVAILABILITY.
+                IRON PAW IS AN INDEPENDENT RESOURCE DIRECTORY.
+                LISTING AN ORGANIZATION DOES NOT IMPLY FORMAL AFFILIATION
+                OR ENDORSEMENT. CONTACT EACH PROVIDER DIRECTLY TO CONFIRM
+                ITS CURRENT SERVICES, ELIGIBILITY REQUIREMENTS, AND AVAILABILITY.
             </div>
         </article>
     </section>
@@ -664,5 +751,6 @@ footer {
 
 </body>
 </html>
+
 
 
